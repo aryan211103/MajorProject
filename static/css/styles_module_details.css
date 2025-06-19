@@ -1,0 +1,97 @@
+/* General body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* Section containing module details */
+.module-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.module-header h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.course-info, .difficulty {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.module-description {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.module-description h3 {
+    font-size: 1.5rem;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.module-description p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #777;
+}
+
+/* Button styles */
+.actions .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.actions .btn:hover {
+    background-color: #45a049;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 768px) {
+    .module-content {
+        padding: 15px;
+    }
+
+    .module-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .course-info, .difficulty {
+        font-size: 1rem;
+    }
+
+    .module-description h3 {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,256 @@
+Course,Module,Difficulty,Skill_level,Links
+DevOps,Introduction to DevOps,Easy,Beginner,
+DevOps,Version Control with Git/GitHub,Easy,Beginner,
+DevOps,Container Basics with Docker,Easy,Beginner,
+DevOps,CI/CD Concepts,Easy,Beginner,
+DevOps,Introduction to Scripting for DevOps,Easy,Beginner,
+DevOps,Jenkins Pipelines,Medium,Intermediate,
+DevOps,Infrastructure as Code (IaC),Medium,Intermediate,
+DevOps,Monitoring with Prometheus,Medium,Intermediate,
+DevOps,Logging with ELK Stack,Medium,Intermediate,
+DevOps,Configuration Management (Ansible),Medium,Intermediate,
+DevOps,Advanced Kubernetes Techniques,Hard,Expert,
+DevOps,Scalable CI/CD Architecture,Hard,Expert,
+DevOps,DevSecOps Principles,Hard,Expert,
+DevOps,Site Reliability Engineering (SRE),Hard,Expert,
+DevOps,Disaster Recovery in DevOps,Hard,Expert,
+DevOps,Multi-Cloud CI/CD Pipelines,M_Expert,Expert,
+DevOps,Advanced IaC Patterns with Terraform,M_Expert,Expert,
+DevOps,Container Orchestration at Scale,M_Expert,Expert,
+DevOps,Security Hardening in DevOps,M_Expert,Expert,
+DevOps,Distributed Systems for DevOps,M_Expert,Expert,
+AI,Introduction to Artificial Intelligence,Easy,Beginner,https://www.elementsofai.com/
+AI,Basic Python for AI,Easy,Beginner,https://youtu.be/5NgNicANyqM?feature=shared
+AI,Introduction to Linear Algebra for AI,Easy,Beginner,https://youtu.be/rSjt1E9WHaQ?feature=shared
+AI,Overview of AI Applications,Easy,Beginner,https://youtu.be/mEsleV16qdo?feature=shared
+AI,History of Artificial Intelligence,Easy,Beginner,https://youtu.be/mSd9nmPM7Vg?feature=shared
+AI,Supervised Learning Basics,Medium,Intermediate,https://youtu.be/4qVRBYAdLAo?feature=shared
+AI,Unsupervised Learning Fundamentals,Medium,Intermediate,https://youtu.be/D6gtZrsYi6c?feature=shared
+AI,Decision Trees and Random Forests,Medium,Intermediate,https://youtu.be/ZOiBe-nrmc4?feature=shared
+AI,Feature Engineering Techniques,Medium,Intermediate,https://youtu.be/GduT2ZCc26E?feature=shared
+AI,Model Evaluation Metrics,Medium,Intermediate,https://youtu.be/lt1YxJ_8Jzs?feature=shared
+AI,Deep Neural Networks,Hard,Expert,https://youtu.be/dPWYUELwIdM?feature=shared
+AI,Reinforcement Learning Basics,Hard,Expert,https://youtu.be/vufTSJbzKGU?feature=shared
+AI,Optimization Algorithms for AI,Hard,Expert,https://youtu.be/qK46ET1xk2A?feature=shared
+AI,Recurrent Neural Networks (RNNs),Hard,Expert,https://youtu.be/QM5XDc4NQJo?feature=shared
+AI,Generative Adversarial Networks (GANs),Hard,Expert,https://youtu.be/RAa55G-oEuk?feature=shared
+AI,Transformers and Large Language Models,M_Expert,Expert,https://youtu.be/bZcKYiwtw1I?feature=shared
+AI,AI for Robotics,M_Expert,Expert,https://buildingai.elementsofai.com/
+AI,Explainable AI (XAI),M_Expert,Expert,https://youtu.be/ZxPV_KVq-tI?feature=shared
+AI,Advanced Natural Language Processing,M_Expert,Expert,https://youtube.com/playlist?list=PLWnsVgP6CzaelCF_jmn5HrpOXzRAPNjWj&feature=shared
+AI,AI for Edge Devices,M_Expert,Expert,https://youtu.be/QXuvUW4B7jU?feature=shared
+IoT,Introduction to IoT,Easy,Beginner,
+IoT,Basics of Sensors and Actuators,Easy,Beginner,
+IoT,IoT Network Fundamentals,Easy,Beginner,
+IoT,Introduction to Arduino and Raspberry Pi,Easy,Beginner,
+IoT,IoT Protocols Overview,Easy,Beginner,
+IoT,IoT Cloud Platforms (AWS IoT),Medium,Intermediate,
+IoT,IoT Edge Computing,Medium,Intermediate,
+IoT,IoT Data Analytics Basics,Medium,Intermediate,
+IoT,IoT Gateway Implementation,Medium,Intermediate,
+IoT,IoT Energy Optimization,Medium,Intermediate,
+IoT,IoT Security Fundamentals,Hard,Expert,
+IoT,Low-Power Network Protocols (LoRa),Hard,Expert,
+IoT,IoT Scalability Solutions,Hard,Expert,
+IoT,IoT with AI Integration,Hard,Expert,
+IoT,IoT Deployment at Scale,Hard,Expert,
+IoT,Advanced IoT Security,M_Expert,Expert,
+IoT,Industrial IoT (IIoT),M_Expert,Expert,
+IoT,IoT Blockchain Integration,M_Expert,Expert,
+IoT,Predictive Maintenance in IoT,M_Expert,Expert,
+IoT,IoT Regulatory Standards,M_Expert,Expert,
+Machine Learning,Introduction to Machine Learning,Easy,Beginner,https://youtu.be/ukzFI9rgwfU?feature=shared
+Machine Learning,Data Cleaning Basics,Easy,Beginner,https://youtu.be/qxpKCBV60U4?feature=shared
+Machine Learning,Basic Regression Techniques,Easy,Beginner,https://youtu.be/a7_1-HNNAFw?feature=shared
+Machine Learning,Introduction to Classification Algorithms,Easy,Beginner,https://youtu.be/KE0QQCK6IrY?feature=shared
+Machine Learning,Overview of ML Applications,Easy,Beginner,https://youtu.be/HKcO3-6TYr0?feature=shared
+Machine Learning,Supervised Learning Algorithms,Medium,Intermediate,https://youtu.be/vbp2mco2c7U?feature=shared
+Machine Learning,Unsupervised Learning Algorithms,Medium,Intermediate,https://youtu.be/3TbU9HI8Io4?feature=shared
+Machine Learning,Feature Selection Methods,Medium,Intermediate,https://youtu.be/xHrR3yHrXMw?feature=shared
+Machine Learning,Model Tuning and Cross-Validation,Medium,Intermediate,https://youtu.be/HdlDYng8g9s?feature=shared
+Machine Learning,Clustering Algorithms,Medium,Intermediate,https://youtu.be/EItlUEPCIzM?feature=shared
+Machine Learning,Deep Learning Basics,Hard,Expert,https://youtu.be/6M5VXKLf4D4?feature=shared
+Machine Learning,Neural Network Optimization,Hard,Expert,https://youtu.be/ER2It2mIagI?feature=shared
+Machine Learning,Reinforcement Learning Techniques,Hard,Expert,https://youtu.be/wDVteayWWvU?feature=shared
+Machine Learning,Graph Neural Networks,Hard,Expert,https://youtu.be/GXhBEj1ZtE8?feature=shared
+Machine Learning,Time Series Forecasting,Hard,Expert,https://youtu.be/vV12dGe_Fho?feature=shared
+Machine Learning,Explainable Machine Learning,M_Expert,Expert,https://youtu.be/VY7SCl_DFho?feature=shared
+Machine Learning,Large-Scale ML Systems,M_Expert,Expert,https://youtube.com/playlist?list=PLmrWBEg5dylfhycz10WkFSGwTdgNzbA9I&feature=shared
+Machine Learning,Advanced NLP Techniques,M_Expert,Expert,https://youtube.com/playlist?list=PLfzy8i8FlDpcRotf60XsUMutM7g046C5q&feature=shared
+Machine Learning,Generative Modeling,M_Expert,Expert,https://youtu.be/5WoItGTWV54?feature=shared
+Machine Learning,Real-Time Machine Learning,M_Expert,Expert,https://youtube.com/playlist?list=PLlUZLZydkS79ctBEkAqeNj5k0RNvAvvD7&feature=shared
+Cloud Computing,Introduction to Cloud Computing,Easy,Beginner,https://youtu.be/usYySG1nbfI?feature=shared
+Cloud Computing,Overview of Virtual Machines,Easy,Beginner,https://youtu.be/mQP0wqNT_DI?feature=shared
+Cloud Computing,Basics of Storage in Cloud,Easy,Beginner,https://youtu.be/56GVjTN6Mzc?feature=shared
+Cloud Computing,Cloud Networking Basics,Easy,Beginner,https://youtube.com/playlist?list=PL3Hc8S1SG2AQHwI1SmwGoWOhbAE3Kf3bN&feature=shared
+Cloud Computing,"Overview of SaaS, PaaS, IaaS",Easy,Beginner,https://youtu.be/lex-DYi1UpU?feature=shared
+Cloud Computing,Introduction to AWS Services,Medium,Intermediate,https://youtu.be/Z3SYDTMP3ME?feature=shared
+Cloud Computing,Introduction to Kubernetes,Medium,Intermediate,https://youtu.be/s_o8dwzRlu4?feature=shared
+Cloud Computing,Serverless Architecture,Medium,Intermediate,https://youtu.be/oiZH5U_a0pg?feature=shared
+Cloud Computing,Cloud Security Essentials,Medium,Intermediate,https://youtube.com/playlist?list=PLIivdWyY5sqLO-4ePY-A2yROgONOA6Cz4&feature=shared
+Cloud Computing,Introduction to Hybrid Cloud,Medium,Intermediate,https://youtu.be/sUoeVhbp4cQ?feature=shared
+Cloud Computing,Advanced Kubernetes Administration,Hard,Expert,https://youtube.com/playlist?list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&feature=shared
+Cloud Computing,Multi-Cloud Management,Hard,Expert,https://youtube.com/playlist?list=PLOspHqNVtKABcMvsegAjlnKYMMV5KsSml&feature=shared
+Cloud Computing,Cloud Cost Optimization,Hard,Expert,https://youtube.com/playlist?list=PLhr1KZpdzukcxUPo44KHv2lkRG4NToQXJ&feature=shared
+Cloud Computing,Cloud Disaster Recovery Solutions,Hard,Expert,https://www.youtube.com/live/oqSl9cUGkaE?feature=shared
+Cloud Computing,Monitoring Cloud Applications,Hard,Expert,https://youtu.be/ApvtPNU_XzE?feature=shared
+Cloud Computing,Scalable Cloud Architecture,M_Expert,Expert,https://youtu.be/9QJiVnt9Aa4?feature=shared
+Cloud Computing,Cloud Automation,M_Expert,Expert,https://youtube.com/playlist?list=PLd3UqWTnYXOkNwxSYZ33McNcDGw9ws3AG&feature=shared
+Cloud Computing,Cloud Security and Compliance,M_Expert,Expert,https://youtu.be/8h_FCDxJGSU?feature=shared
+Cloud Computing,Cloud DevOps Practices,M_Expert,Expert,https://youtube.com/playlist?list=PLdpzxOOAlwvLm5lWlYctUnwaFRIO2Io_5&feature=shared
+Cloud Computing,Cloud-Native App Development,M_Expert,Expert,https://youtube.com/playlist?list=PLOspHqNVtKACSagAEeIY20NMVLNeQ1ZJx&feature=shared
+Mobile App Development,Introduction to Mobile Development,Easy,Beginner,https://youtu.be/BCSlZIUj18Y?feature=shared
+Mobile App Development,Basic Android Development,Easy,Beginner,https://youtu.be/fis26HvvDII?feature=shared
+Mobile App Development,Basic iOS Development,Easy,Beginner,https://youtu.be/09TeUXjzpKs?feature=shared
+Mobile App Development,Introduction to React Native,Easy,Beginner,https://youtu.be/Hf4MJH0jDb4?feature=shared
+Mobile App Development,Overview of Mobile App Architectures,Easy,Beginner,https://youtu.be/WvwQal6WYJ0?feature=shared
+Mobile App Development,Cross-Platform Development,Medium,Intermediate,https://youtu.be/1gDhl4leEzA?feature=shared
+Mobile App Development,Mobile App Security Essentials,Medium,Intermediate,https://youtu.be/CvemRi9TCeQ?feature=shared
+Mobile App Development,Database Integration for Mobile Apps,Medium,Intermediate,https://youtu.be/JhFu6Bjyabs?feature=shared
+Mobile App Development,User Authentication in Mobile Apps,Medium,Intermediate,https://www.youtube.com/live/29XNc8nCUTQ?feature=shared
+Mobile App Development,Mobile App Performance Optimization,Medium,Intermediate,https://www.classcentral.com/course/youtube-learn-from-developers-lyft-and-google-maps-share-their-experiences-optimizing-app-performance-211627
+Mobile App Development,Advanced Mobile UI/UX,Hard,Expert,https://youtube.com/playlist?list=PLwnphfuyBZiCIQohaZModvLrYQsnnhYkd&feature=shared
+Mobile App Development,Integrating AR/VR in Mobile Apps,Hard,Expert,https://www.coursera.org/learn/ar
+Mobile App Development,Mobile Payment Gateway Integration,Hard,Expert,https://youtu.be/Jcfo-j5y0rM?feature=shared
+Mobile App Development,Mobile DevOps Practices,Hard,Expert,https://youtu.be/d7Wsb02FL6o?feature=shared
+Mobile App Development,Push Notifications and Messaging,Hard,Expert,https://youtu.be/BtlV1CekE4k?feature=shared
+Mobile App Development,Advanced ARKit and SceneKit for iOS,M_Expert,Expert,https://www.youtube.com/live/XqRVfB521Fo?feature=shared
+Mobile App Development,Mobile App Scalability,M_Expert,Expert,https://youtu.be/dKqPWYwOQ2Y?feature=shared
+Mobile App Development,AI Integration in Mobile Apps,M_Expert,Expert,https://www.elementsofai.com/
+Mobile App Development,IoT Integration in Mobile Apps,M_Expert,Expert,https://youtu.be/h0gWfVCSGQQ?feature=shared
+Mobile App Development,Advanced Cross-Platform Techniques,M_Expert,Expert,https://youtu.be/u64gyCdqawU?feature=shared
+Data Science,Introduction to Data Science,Easy,Beginner,
+Data Science,Data Wrangling Basics,Easy,Beginner,
+Data Science,Fundamentals of Data Visualization,Easy,Beginner,
+Data Science,Overview of Data Analytics Tools,Easy,Beginner,
+Data Science,Statistics for Data Science,Easy,Beginner,
+Data Science,Exploratory Data Analysis (EDA),Medium,Intermediate,
+Data Science,Introduction to Predictive Modeling,Medium,Intermediate,
+Data Science,Data Pipeline Development,Medium,Intermediate,
+Data Science,Data Integration and Transformation,Medium,Intermediate,
+Data Science,Introduction to Time Series Analysis,Medium,Intermediate,
+Data Science,Advanced Regression Techniques,Hard,Expert,
+Data Science,Big Data Analysis with Hadoop,Hard,Expert,
+Data Science,Deep Learning for Data Science,Hard,Expert,
+Data Science,Natural Language Processing Basics,Hard,Expert,
+Data Science,Geospatial Data Analysis,Hard,Expert,
+Data Science,Building Scalable Data Models,M_Expert,Expert,
+Data Science,Cloud-Based Data Science Tools,M_Expert,Expert,
+Data Science,Ethics in Data Science,M_Expert,Expert,
+Data Science,Data Science for AI Integration,M_Expert,Expert,
+Data Science,Advanced Time Series Forecasting,M_Expert,Expert,
+UI/UX Design,Basics of User Interface Design,Easy,Beginner,
+UI/UX Design,Introduction to User Experience Design,Easy,Beginner,
+UI/UX Design,Introduction to Wireframing Tools,Easy,Beginner,
+UI/UX Design,Overview of UI/UX Design Principles,Easy,Beginner,
+UI/UX Design,Fundamentals of Color Theory,Easy,Beginner,
+UI/UX Design,Prototyping with Figma,Medium,Intermediate,
+UI/UX Design,Advanced Wireframing Techniques,Medium,Intermediate,
+UI/UX Design,Usability Testing Fundamentals,Medium,Intermediate,
+UI/UX Design,Interaction Design Basics,Medium,Intermediate,
+UI/UX Design,Typography for UI/UX,Medium,Intermediate,
+UI/UX Design,Responsive Design Techniques,Hard,Expert,
+UI/UX Design,Creating Design Systems,Hard,Expert,
+UI/UX Design,Advanced Prototyping with Adobe XD,Hard,Expert,
+UI/UX Design,Animation in UI Design,Hard,Expert,
+UI/UX Design,Accessibility Standards in Design,Hard,Expert,
+UI/UX Design,Advanced UX Research Techniques,M_Expert,Expert,
+UI/UX Design,AI in UX Personalization,M_Expert,Expert,
+UI/UX Design,Advanced Interaction Design,M_Expert,Expert,
+UI/UX Design,Designing for AR/VR,M_Expert,Expert,
+UI/UX Design,Ethics in Design Decisions,M_Expert,Expert,
+Blockchain,Introduction to Blockchain,Easy,Beginner,
+Blockchain,Overview of Bitcoin and Ethereum,Easy,Beginner,
+Blockchain,Basic Cryptographic Concepts,Easy,Beginner,
+Blockchain,Introduction to Smart Contracts,Easy,Beginner,
+Blockchain,Blockchain Use Cases,Easy,Beginner,
+Blockchain,Smart Contract Development,Medium,Intermediate,
+Blockchain,Blockchain Consensus Mechanisms,Medium,Intermediate,
+Blockchain,Decentralized Application (DApp) Basics,Medium,Intermediate,
+Blockchain,Introduction to Hyperledger,Medium,Intermediate,
+Blockchain,Public vs Private Blockchains,Medium,Intermediate,
+Blockchain,Advanced Smart Contracts,Hard,Expert,
+Blockchain,Blockchain Interoperability,Hard,Expert,
+Blockchain,Layer 2 Solutions,Hard,Expert,
+Blockchain,Blockchain Security Fundamentals,Hard,Expert,
+Blockchain,Tokenization and Digital Assets,Hard,Expert,
+Blockchain,Advanced Blockchain Scalability,M_Expert,Expert,
+Blockchain,Privacy in Blockchain Networks,M_Expert,Expert,
+Blockchain,Blockchain for Enterprise Solutions,M_Expert,Expert,
+Blockchain,DeFi Protocols,M_Expert,Expert,
+Blockchain,Blockchain-Based Identity Solutions,M_Expert,Expert,
+Web Development,Introduction to HTML and CSS,Easy,Beginner,
+Web Development,Basic JavaScript Programming,Easy,Beginner,
+Web Development,Introduction to Web Design Principles,Easy,Beginner,
+Web Development,Responsive Web Design Basics,Easy,Beginner,
+Web Development,Introduction to Web Hosting,Easy,Beginner,
+Web Development,Frontend Development with React,Medium,Intermediate,
+Web Development,Backend Development with Node.js,Medium,Intermediate,
+Web Development,Database Integration Basics,Medium,Intermediate,
+Web Development,API Development Fundamentals,Medium,Intermediate,
+Web Development,Version Control with Git,Medium,Intermediate,
+Web Development,Advanced JavaScript Frameworks,Hard,Expert,
+Web Development,Building Progressive Web Apps,Hard,Expert,
+Web Development,Web Security Essentials,Hard,Expert,
+Web Development,Server-Side Rendering Techniques,Hard,Expert,
+Web Development,Performance Optimization for Websites,Hard,Expert,
+Web Development,Scalable Web Architecture,M_Expert,Expert,
+Web Development,Cloud-Based Web Applications,M_Expert,Expert,
+Web Development,Advanced API Design with GraphQL,M_Expert,Expert,
+Web Development,Web Development for AI Integration,M_Expert,Expert,
+Web Development,Ethical Web Design,M_Expert,Expert,
+Cybersecurity,Introduction to Cybersecurity,Easy,Beginner,
+Cybersecurity,Basics of Network Security,Easy,Beginner,
+Cybersecurity,Overview of Cyber Threats,Easy,Beginner,
+Cybersecurity,Fundamentals of Cryptography,Easy,Beginner,
+Cybersecurity,Introduction to Security Policies,Easy,Beginner,
+Cybersecurity,Web Application Security Basics,Medium,Intermediate,
+Cybersecurity,Introduction to Penetration Testing,Medium,Intermediate,
+Cybersecurity,Cyber Incident Response,Medium,Intermediate,
+Cybersecurity,Identity and Access Management,Medium,Intermediate,
+Cybersecurity,Risk Assessment Fundamentals,Medium,Intermediate,
+Cybersecurity,Advanced Penetration Testing,Hard,Expert,
+Cybersecurity,Malware Analysis and Reverse Engineering,Hard,Expert,
+Cybersecurity,Cloud Security Essentials,Hard,Expert,
+Cybersecurity,Advanced Network Defense Techniques,Hard,Expert,
+Cybersecurity,Incident Handling and Forensics,Hard,Expert,
+Cybersecurity,Ethical Hacking Techniques,M_Expert,Expert,
+Cybersecurity,Zero Trust Security Models,M_Expert,Expert,
+Cybersecurity,Advanced Cryptography Applications,M_Expert,Expert,
+Cybersecurity,AI in Cybersecurity,M_Expert,Expert,
+Cybersecurity,Cybersecurity for Critical Infrastructure,M_Expert,Expert,
+Software Engineering,Introduction to Software Engineering,Easy,Beginner,
+Software Engineering,Software Development Life Cycle (SDLC),Easy,Beginner,
+Software Engineering,Agile and Scrum Fundamentals,Easy,Beginner,
+Software Engineering,Software Testing and Debugging,Easy,Beginner,
+Software Engineering,Object-Oriented Design Principles,Medium,Intermediate,
+Software Engineering,Software Architecture Patterns,Medium,Intermediate,
+Software Engineering,Database Design and SQL Basics,Medium,Intermediate,
+Software Engineering,Microservices Architecture,Medium,Intermediate,
+Software Engineering,Cloud-based Software Development,Medium,Intermediate,
+Software Engineering,Advanced Software Testing,Hard,Expert,
+Software Engineering,DevOps Practices in Software Engineering,Hard,Expert,
+Software Engineering,Scalability and Performance Optimization,Hard,Expert,
+Software Engineering,Design Patterns and Refactoring,Hard,Expert,
+Software Engineering,Software Maintenance and Evolution,Hard,Expert,
+Software Engineering,Software Security Best Practices,M_Expert,Expert,
+Software Engineering,High-Performance Computing,M_Expert,Expert,
+Software Engineering,Advanced DevOps Automation,M_Expert,Expert,
+Software Engineering,AI-Augmented Software Engineering,M_Expert,Expert,
+Neural Networks,Introduction to Neural Networks,Easy,Beginner,
+Neural Networks,Activation Functions and Perceptrons,Easy,Beginner,
+Neural Networks,Feedforward Networks,Easy,Beginner,
+Neural Networks,Gradient Descent and Backpropagation,Easy,Beginner,
+Neural Networks,Convolutional Neural Networks (CNNs),Medium,Intermediate,
+Neural Networks,Regularization and Dropout,Medium,Intermediate,
+Neural Networks,Hyperparameter Tuning,Medium,Intermediate,
+Neural Networks,Transfer Learning Basics,Medium,Intermediate,
+Neural Networks,"Advanced Architectures (GANs, LSTMs)",Hard,Expert,
+Neural Networks,"Optimization Algorithms (Adam, SGD)",Hard,Expert,
+Neural Networks,Neural Network Debugging Techniques,Hard,Expert,
+Neural Networks,Model Deployment and Scalability,Hard,Expert,
+Neural Networks,Reinforcement Learning for Neural Networks,Hard,Expert,
+Neural Networks,Neural Network Optimization Strategies,M_Expert,Expert,
+Neural Networks,Neuroscience-Inspired Architectures,M_Expert,Expert,
+Neural Networks,Custom AI Model Design,M_Expert,Expert,
+Neural Networks,Advanced Neural Network Research Topics,M_Expert,Expert,

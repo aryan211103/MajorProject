@@ -1,0 +1,1043 @@
+[
+  {
+    "_id": 1,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "What does ML stand for?",
+    "options": [
+      "Machine Learning",
+      "Model Learning",
+      "Manual Learning",
+      "Multi Learning"
+    ],
+    "correct_answer": "Machine Learning"
+  },
+  {
+    "_id": 2,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which of these is a supervised learning algorithm?",
+    "options": [
+      "K-Means",
+      "DBSCAN",
+      "Decision Tree",
+      "Apriori"
+    ],
+    "correct_answer": "Decision Tree"
+  },
+  {
+    "_id": 3,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which of these is a common ML library in Python?",
+    "options": [
+      "TensorFlow",
+      "Pandas",
+      "Matplotlib",
+      "Flask"
+    ],
+    "correct_answer": "TensorFlow"
+  },
+  {
+    "_id": 4,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "What is the primary goal of supervised learning?",
+    "options": [
+      "Finding patterns in unlabeled data",
+      "Predicting labels from training data",
+      "Reducing memory usage",
+      "Making data visualization"
+    ],
+    "correct_answer": "Predicting labels from training data"
+  },
+  {
+    "_id": 5,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which technique is used to reduce overfitting in a model?",
+    "options": [
+      "Dropout",
+      "Batch Normalization",
+      "Gradient Descent",
+      "Random Forest"
+    ],
+    "correct_answer": "Dropout"
+  },
+  {
+    "_id": 6,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which is an example of unsupervised learning?",
+    "options": [
+      "Linear Regression",
+      "Logistic Regression",
+      "K-Means Clustering",
+      "Decision Trees"
+    ],
+    "correct_answer": "K-Means Clustering"
+  },
+  {
+    "_id": 7,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which metric is commonly used for classification models?",
+    "options": [
+      "RMSE",
+      "MSE",
+      "Accuracy",
+      "Silhouette Score"
+    ],
+    "correct_answer": "Accuracy"
+  },
+  {
+    "_id": 8,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which of the following is a deep learning framework?",
+    "options": [
+      "TensorFlow",
+      "Scikit-learn",
+      "Matplotlib",
+      "BeautifulSoup"
+    ],
+    "correct_answer": "TensorFlow"
+  },
+  {
+    "_id": 9,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "What is the purpose of a loss function in ML?",
+    "options": [
+      "To visualize data",
+      "To compute error in prediction",
+      "To store data",
+      "To scale features"
+    ],
+    "correct_answer": "To compute error in prediction"
+  },
+  {
+    "_id": 10,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "What is the first step in any ML project?",
+    "options": [
+      "Feature engineering",
+      "Collecting data",
+      "Choosing a model",
+      "Training the model"
+    ],
+    "correct_answer": "Collecting data"
+  },    
+  {
+  "_id": 11,
+  "course": "Machine Learning",
+  "section": "aptitude",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "question": "Which function in Pandas is used to read a CSV file?",
+  "options": [
+    "pd.load()",
+    "pd.read_csv()",
+    "pd.open_csv()",
+    "pd.file_read()"
+  ],
+  "correct_answer": "pd.read_csv()"
+  },
+  {
+    "_id": 12,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which command opens a file in Python for reading?",
+    "options": [
+      "open('file.txt', 'w')", "open('file.txt', 'r')", "open('file.txt', 'rb')", "open('file.txt', 'wb')"
+    ],
+    "correct_answer": "open('file.txt', 'r')"
+  },
+  {
+  "_id": 13,
+  "course": "Machine Learning",
+  "section": "aptitude",
+  "difficulty": "intermediate",
+  "type": "mcq",
+  "question": "Which Scikit-learn function is used to split data into training and testing sets?",
+  "options": ["train_test_split()", "data_split()", "split_data()", "test_train_split()"],
+  "correct_answer": "train_test_split()"
+  },
+  {
+    "_id": 14,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which activation function is commonly used in deep learning?",
+    "options": ["ReLU", "Sigmoid", "Softmax", "All of the above"],
+    "correct_answer": "All of the above"
+  },
+  {
+    "_id": 15,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which parameter is adjusted to prevent overfitting?",
+    "options": ["Epochs", "Batch Size", "Learning Rate", "Regularization"],
+    "correct_answer": "Regularization"
+  },
+  {
+    "_id": 16,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "What does the .fit() method do in Scikit-learn?",
+    "options": ["Trains the model", "Tests the model", "Visualizes the model", "Creates a dataset"],
+    "correct_answer": "Trains the model"
+  },
+  {
+    "_id": 17,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which technique is used for dimensionality reduction?",
+    "options": ["PCA", "Gradient Descent", "Feature Scaling", "Bagging"],
+    "correct_answer": "PCA"
+  },
+  {
+    "_id": 18,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which method is used to handle missing values in Pandas?",
+    "options": ["dropna()", "fillna()", "replace()", "All of the above"],
+    "correct_answer": "All of the above"
+  }, 
+  {
+    "_id": 19,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which Python library is used for plotting ML results?",
+    "options": ["Matplotlib", "NumPy", "Scikit-learn", "Pandas"],
+    "correct_answer": "Matplotlib"
+  }, 
+  {
+    "_id": 20,
+    "course": "Machine Learning",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which function is used to scale features in Scikit-learn?",
+    "options": ["MinMaxScaler()", "StandardScaler()", "normalize()", "All of the above"],
+    "correct_answer": "All of the above"
+  },
+  {
+    "_id": 21,
+    "course": "Machine Learning",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "coding",
+    "question": "Develop a function to compute the Euclidean distance between two points in an n-dimensional space.",
+    "language_id": 71,  
+    "expected_output": "5.196",
+    "test_cases": [
+      {
+        "stdin": "[[1,2,3],[4,5,6]]",
+        "expected_output": "5.196"
+      }
+    ]
+  },
+  {
+    "_id": 22,
+    "course": "Machine Learning",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "coding",
+    "question": "Create a function that computes the mean squared error given two lists or arrays: one for the predicted values and one for the actual values.",
+    "language_id": 71,  
+    "expected_output": "0.375",  
+    "test_cases": [
+      {
+        "stdin": "predicted_values = [3, -0.5, 2, 7], actual_values = [2.5, 0.0, 2, 8]",
+        "expected_output": "0.375"
+      }
+    ]
+  },
+  {
+    "_id": 23,
+    "course": "Machine Learning",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "coding",
+    "question": "Write a function that calculates the accuracy of a model given two lists: one of predicted labels and one of actual labels.",
+    "language_id": 71,  
+    "expected_output": "0.6",  
+    "test_cases": [
+      {
+        "stdin": "predicted = [1, 0, 1, 1, 0], actual = [1, 1, 1, 0, 0]",
+        "expected_output": "0.6"
+      }
+    ]
+  },
+  {
+    "_id": 24,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "What  is cloud computing",
+    "options": [
+    "A type of hardware",
+    "Delivering services over the internet",
+    "A programming language",
+    "A database management system"
+    ],
+    "correct_answer": "Delivering services over the internet"
+  },
+  {
+    "_id": 25,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which of the following is a leading cloud service provider?",
+    "options": ["AWS", "MySQL", "Linux", "TensorFlow"],
+    "correct_answer": "AWS"
+  },
+  {
+    "_id": 26,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which cloud model provides virtualized computing resources over the internet?",
+    "options": ["IaaS", "PaaS", "SaaS", "None of the above"],
+    "correct_answer": "IaaS"
+  },
+  {
+    "_id": 27,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which of these is an example of SaaS?",
+    "options": ["Amazon EC2", "Google Drive", "Docker", "Terraform"],
+    "correct_answer": "Google Drive"
+  },
+  {
+    "_id": 28,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which of the following cloud deployment models offers services to multiple organizations?",
+    "options": ["Private Cloud", "Public Cloud", "Hybrid Cloud", "Community Cloud"],
+    "correct_answer": "Community Cloud"
+  },
+  {
+    "_id": 29,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which cloud model provides a platform for developers to build applications?",
+    "options": ["IaaS", "PaaS", "SaaS", "DaaS"],
+    "correct_answer": "PaaS"
+  },
+  {
+    "_id": 30,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "What does AWS stand for?",
+    "options": ["Amazon Web Services", "Advanced Web Solutions", "Automated Web System", "Amazon Wireless Services"],
+    "correct_answer": "Amazon Web Services"
+  },
+  {
+    "_id": 31,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which cloud computing characteristic allows users to pay only for what they use?",
+    "options": ["Scalability", "Elasticity", "Pay-as-you-go", "On-premises hosting"],
+    "correct_answer": "Pay-as-you-go"
+  },
+  {
+    "_id": 32,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which cloud provider offers Azure?",
+    "options": ["Google", "Microsoft", "IBM", "Amazon"],
+    "correct_answer": "Microsoft"
+  },
+  {
+    "_id": 33,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which is a key benefit of cloud computing?",
+    "options": ["More physical servers", "Lower costs and high scalability", "Only for large businesses", "Requires extensive hardware setup"],
+    "correct_answer": "Lower costs and high scalability"
+  },
+  {
+    "_id": 34,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "What is the purpose of a Virtual Private Cloud (VPC)?",
+    "options": ["To create isolated cloud resources", "To provide a local storage system", "To enhance AI processing", "To reduce cloud costs"],
+    "correct_answer": "To create isolated cloud resources"
+  },
+  {
+    "_id": 35,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which AWS service is used for object storage?",
+    "options": ["EC2", "Lambda", "S3", "DynamoDB"],
+    "correct_answer": "S3"
+  },
+  {
+    "_id": 36,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which cloud security practice helps prevent data breaches?",
+    "options": ["Ignoring backups", "Strong IAM policies", "Using only public servers", "Disabling firewalls"],
+    "correct_answer": "Strong IAM policies"
+  },
+  {
+    "_id": 37,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which cloud service model is best for hosting a database without managing infrastructure?",
+    "options": ["IaaS", "PaaS", "SaaS", "None"],
+    "correct_answer": "PaaS"
+  },
+  {
+    "_id": 38,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which AWS service is used for serverless computing?",
+    "options": ["EC2", "Lambda", "RDS", "CloudFront"],
+    "correct_answer": "Lambda"
+  },
+  {
+    "_id": 39,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "What does auto-scaling do in cloud computing?",
+    "options": ["Automatically increases/decreases resources based on demand", "Eliminates the need for backups", "Provides faster internet", "Improves programming speed"],
+    "correct_answer": "Automatically increases/decreases resources based on demand"
+  },
+  {
+    "_id": 40,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which of these is NOT a cloud storage provider?",
+    "options": ["Google Drive", "Dropbox", "GitHub", "OneDrive"],
+    "correct_answer": "GitHub"
+  },
+  {
+    "_id": 41,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which cloud computing deployment model combines public and private clouds?",
+    "options": ["Community Cloud", "Hybrid Cloud", "Dedicated Cloud", "Fog Computing"],
+    "correct_answer": "Hybrid Cloud"
+  },
+  {
+    "_id": 42,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which is an example of a cloud-native application?",
+    "options": ["Monolithic applications", "Microservices-based applications", "Offline desktop software", "Virtual Reality games"],
+    "correct_answer": "Microservices-based applications"
+  },
+  {
+    "_id": 43,
+    "course": "Cloud Computing",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which of the following best describes 'cloud elasticity'?",
+    "options": ["Automatic adjustment of resources based on demand", "Fixed server size allocation", "Hybrid cloud deployment", "Dedicated hardware setup"],
+    "correct_answer": "Automatic adjustment of resources based on demand"
+  },
+  {
+    "_id": 44,
+    "course": "Cloud Computing",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "scenario",
+    "question": "You are designing a multi-region cloud application. How would you ensure high availability and fault tolerance?",
+    "options": [
+    "Deploy in a single data center",
+    "Use multi-region replication and load balancing",
+    "Use only on-premises servers",
+    "Increase CPU usage in one region"
+    ],
+    "correct_answer": "Use multi-region replication and load balancing"
+  },
+  {
+    "_id": 45,
+    "course": "Cloud Computing",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "scenario",
+    "question": "Your company wants to migrate a legacy application to the cloud with minimal downtime. Which approach would be best?",
+    "options": ["Lift and shift", "Rewriting the application completely", "Stopping services before migration", "Using only hybrid cloud"],
+    "correct_answer": "Lift and shift"
+  },
+  {
+    "_id": 46,
+    "course": "Cloud Computing",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "scenario",
+    "question": "Your cloud-based database is experiencing high latency. What steps can you take to optimize performance?",
+    "options": ["Implement caching with services like Redis", "Disable backups", "Increase the number of API calls", "Use a single database instance"],
+    "correct_answer": "Implement caching with services like Redis"
+  },
+  {
+    "_id": 47,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question":"Which of the following is NOT a mobile OS?",
+    "options": ["Android", "iOS", "Windows Phone", "Ubuntu"],
+    "correct_answer": "Ubuntu"
+  },
+  {
+    "_id": 48,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which language is primarily used for Android development?",
+    "options": ["Swift", "Python", "Java", "C++"],
+    "correct_answer": "Java"
+  },
+  {
+    "_id": 49,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "What is the main programming language for iOS development?",
+    "options": ["Swift", "Java", "C#", "Dart"],
+    "correct_answer": "Swift"
+  },
+  {
+    "_id": 50,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which of these is a cross-platform mobile development framework",
+    "options": ["React Native", "Kotlin", "Objective-C", "Swift"],
+    "correct_answer": "React Native"
+  },
+  {
+    "_id": 51,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which tool is used to develop Flutter apps?",
+    "options": ["Android Studio", "Xcode", "Visual Studio", "Flutter SDK"],
+    "correct_answer": "Flutter SDK"
+  },
+  {
+    "_id": 52,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which of these is NOT a UI component in Flutter?",
+    "options": ["Container", "TextView", "Row", "Column"],
+    "correct_answer": "TextView"
+  },
+  {
+    "_id": 53,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "What does APK stand for in Android development?",
+    "options": ["Android Package", "App Processing Kit", "Application Package", "Advanced Processing Kernel"],
+    "correct_answer": "Android Package"
+  },
+  {
+    "_id": 54,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which format is used for defining UI layouts in Android?",
+    "options": ["XML", "HTML", "JSON", "YAML"],
+    "correct_answer": "XML"
+  },
+  {
+    "_id": 55,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which command is used to run an Android project from the terminal?",
+    "options": ["npm start", "react-native start", "flutter run", "android run"],
+    "correct_answer": "flutter run"
+  },
+  {
+    "_id": 56,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which iOS tool is used for debugging?",
+    "options": ["Xcode Debugger", "Android Logcat", "Chrome DevTools", "Postman"],
+    "correct_answer": "Xcode Debugger"
+  },
+  {
+    "_id": 57,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which of these Android architectures improves performance?",
+    "options": ["Singleton", "MVVM", "Observer", "Factory"],
+    "correct_answer": "MVVM"
+  },
+  {
+    "_id": 58,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "What is the role of the Gradle build system in Android development?",
+    "options": ["Manages dependencies and builds", "Runs UI tests", "Compiles Dart code", "Handles networking"],
+    "correct_answer": "Manages dependencies and builds"
+  },
+  {
+    "_id": 59,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which lifecycle method is called when an Android activity is about to be destroyed?",
+    "options": ["onStop()", "onPause()", "onDestroy()", "onExit()"],
+    "correct_answer": "onDestroy()"
+  },
+  {
+    "_id": 60,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which Flutter widget allows stacking elements on top of each other?",
+    "options": ["Column", "Stack", "Row", "Grid"],
+    "correct_answer": "Stack"
+  },
+  {
+    "_id": 61,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "How do you define a stateful widget in Flutter?",
+    "options": ["extends StatefulWidget", "extends StatelessWidget", "extends Component", "extends Widget"],
+    "correct_answer": "extends StatefulWidget"
+  },
+  {
+    "_id": 62,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which tool is used to test iOS apps?",
+    "options": ["JUnit", "Mocha", "XCTest", "Selenium"],
+    "correct_answer": "XCTest"
+  },
+  {
+    "_id": 63,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which HTTP library is commonly used in Flutter for API calls?",
+    "options": ["Fetch", "Dio","Axios", "OkHttp"],
+    "correct_answer": "Dio"
+  },
+  {
+    "_id": 64,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "What does Hot Reload do in Flutter?",
+    "options": ["Clears cache", "Increases app speed", "Removes errors","Instant UI updates without restarting"],
+    "correct_answer": "Instant UI updates without restarting"
+  },
+  {
+    "_id": 65,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "What is the main advantage of using Jetpack Compose for Android UI?",
+    "options": ["Faster networking", "Better animations","Declarative UI", "Automatic memory management"],
+    "correct_answer": "Declarative UI"
+  },
+  {
+    "_id": 66,
+    "course": "Mobile App Development",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which method is used to navigate between screens in React Native?",
+    "options": ["route()", "switchScreen()","navigate()", "moveTo()"],
+    "correct_answer": "navigate()"
+  },
+  {
+    "_id": 67,
+    "course": "Mobile App Development",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "coding",
+    "question": "Write a Python function that takes a 10-digit string and formats it as a phone number in the format (XXX) XXX-XXXX.  ",
+    "language_id": 71,  
+    "expected_output": "(123) 456-7890",
+    "test_cases": [
+      {
+        "stdin": "1234567890",
+        "expected_output": "(123) 456-7890"
+      }
+    ]
+  },
+  {
+    "_id": 68,
+    "course": "Mobile App Development",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "coding",
+    "question": "Write a Python function that checks if an email address is valid using a simple regular expression.",
+    "language_id": 71,  
+    "expected_output": "True",  
+    "test_cases": [
+      {
+        "stdin": "test@example.com",
+        "expected_output": "True"
+      }
+    ]
+  },
+  {
+    "_id": 69,
+    "course": "Mobile App Development",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "coding",
+    "question": "Write a function that finds the length of the longest substring in a given string that does not contain any repeating characters.",
+    "language_id": 71,  
+    "expected_output": "3",  
+    "test_cases": [
+      {
+        "stdin": "abcabcbb",
+        "expected_output": "3"
+      }
+    ]
+  },
+  {
+    "_id": 70,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question":"Which of the following is an AI technique?",
+    "options": ["Machine Learning", "Blockchain", "Web Development", "Networking"],
+    "correct_answer": "Machine Learning"
+  },
+  {
+    "_id": 71,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which language is primarily used for AI development?",
+    "options": ["Java", "Python", "C#", "Ruby"],
+    "correct_answer": "Python"
+  },
+  {
+    "_id": 72,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "What is the core concept of Artificial Intelligence?",
+    "options": ["Building websites", "Programming games", "Creating systems that can mimic human intelligence", "Network security"],
+    "correct_answer": "Creating systems that can mimic human intelligence"
+  },
+  {
+    "_id": 73,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "What does NLP stand for in AI",
+    "options": ["Natural Language Processing", "Neural Learning Process", "New Learning Protocol", "Node Layer Processing"],
+    "correct_answer": "Natural Language Processing"
+  },
+  {
+    "_id": 74,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which AI technique is used to build chatbots?",
+    "options": ["Machine Learning", "Deep Learning", "Natural Language Processing", "Reinforcement Learning"],
+    "correct_answer": "Natural Language Processing"
+  },
+  {
+    "_id": 75,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which of these is an example of supervised learning?",
+    "options": ["Classification", "Clustering", "Association", "Dimensionality Reduction"],
+    "correct_answer": "Classification"
+  },
+  {
+    "_id": 76,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which of the following algorithms is used for decision making in AI?",
+    "options": ["K-Means", "Decision Tree", "Linear Regression", "PCA"],
+    "correct_answer": "Decision Tree"
+  },
+  {
+    "_id": 77,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "What is deep learning?",
+    "options": ["A type of decision tree", "A form of clustering", "None of the above", "A subset of machine learning using neural networks"],
+    "correct_answer": "A subset of machine learning using neural networks"
+  },
+  {
+    "_id": 78,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which of the following is a reinforcement learning model?",
+    "options": ["Q-learning", "Linear Regression", "K-Means", "Logistic Regression"],
+    "correct_answer": "Q-learning"
+  },
+  {
+    "_id": 79,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "begineer",
+    "type": "mcq",
+    "question": "Which neural network is primarily used for image recognition?",
+    "options": ["Convolutional Neural Network", "Recurrent Neural Network", "Deep Belief Network", "Support Vector Machine"],
+    "correct_answer": "Convolutional Neural Network"
+  },
+  {
+    "_id": 80,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which of the following is used to train a deep neural network?",
+    "options": ["Backpropagation", "Gradient Descent", "Both A and B", "None of the above"],
+    "correct_answer": "Both A and B"
+  },
+  {
+    "_id": 81,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "What is the primary purpose of an activation function in a neural network?",
+    "options": ["To provide stdin data", "To train the network", "To introduce non-linearity", "To calculate gradients"],
+    "correct_answer": "To introduce non-linearity"
+  },
+  {
+    "_id": 82,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "What is the advantage of using a convolutional layer in deep learning?",
+    "options": ["Extracts features from images", "Reduces overfitting", "Improves training speed", "Handles missing values"],
+    "correct_answer": "Extracts features from images"
+  },
+  {
+    "_id": 83,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which Python library is widely used for deep learning?",
+    "options": ["Django", "Pandas", "TensorFlow", "Flask"],
+    "correct_answer": "TensorFlow"
+  },
+  {
+    "_id": 84,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which of the following methods is used to prevent overfitting in neural networks?",
+    "options": ["Dropout", "Early stopping", "Data augmentation", "All of the above"],
+    "correct_answer": "All of the above"
+  },
+  {
+    "_id": 85,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which of these is NOT an unsupervised learning algorithm?",
+    "options": ["K-means", "PCA", "DBSCAN", "Logistic Regression"],
+    "correct_answer": "Logistic Regression"
+  },
+  {
+    "_id": 86,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which of the following is a key feature of reinforcement learning?",
+    "options": ["Reward and punishment", "Supervised labels", "Clustering", "Dimensionality reduction"],
+    "correct_answer": "Reward and punishment"
+  },
+  {
+    "_id": 87,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which algorithm is used in Natural Language Processing for topic modeling?",
+    "options": ["K-means", "SVM", "Latent Dirichlet Allocation", "Decision Trees"],
+    "correct_answer": "Latent Dirichlet Allocation"
+  },
+  {
+    "_id": 88,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "What is a key characteristic of a recurrent neural network (RNN)?",
+    "options": ["It is used for clustering", "It has a fixed stdin size", "It has loops in its architecture", "It uses convolutional layers"],
+    "correct_answer": "It has loops in its architecture"
+  },
+  {
+    "_id": 89,
+    "course": "AI",
+    "section": "aptitude",
+    "difficulty": "intermediate",
+    "type": "mcq",
+    "question": "Which of these is used to evaluate model performance in classification tasks?",
+    "options": ["Confusion Matrix", "ROC Curve", "Precision-Recall", "All of the above"],
+    "correct_answer": "All of the above"
+  },
+  {
+    "_id": 90,
+    "course": "AI",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "coding",
+    "question": "Write a Python function that computes the sigmoid activation function",
+    "language_id": 71,  
+    "expected_output": "0.5",
+    "test_cases": [
+      {
+        "stdin": "0",
+        "expected_output": "0.5"
+      }
+    ]
+  },
+  {
+    "_id": 91,
+    "course": "AI",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "coding",
+    "question": "Write a Python function that computes the softmax for a list of numbers. Given the stdin [2.0, 1.0, 0.1], the function should return values that, when rounded to three decimals, are approximately [0.659, 0.242, 0.099].",
+    "language_id": 71,  
+    "expected_output": "[0.659, 0.242, 0.099]",  
+    "test_cases": [
+      {
+        "stdin": "scores = [2.0, 1.0, 0.1]",
+        "expected_output": "[0.659, 0.242, 0.099]"
+      }
+    ]
+  },
+  {
+    "_id": 92,
+    "course": "AI",
+    "section": "technical",
+    "difficulty": "expert",
+    "type": "coding",
+    "question": "Write a function that calculates the accuracy given a list of predicted labels and actual labels.",
+    "language_id": 71,  
+    "expected_output": "0.75",  
+    "test_cases": [
+      {
+        "stdin": "predicted = [1, 0, 1, 1], actual = [1, 0, 0, 1]",
+        "expected_output": "0.75"
+      }
+    ]
+  }
+]

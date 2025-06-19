@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recommended Modules</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_modules.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Recommended Modules</h1>
+    <table class="module-table">
+      <thead>
+        <tr>
+          <th>Module Name</th>
+          <th>Difficulty</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for module in modules %}
+        <tr class="module-row">
+          <td>{{ module['Module'] }}</td>
+          <td>{{ module['Difficulty'] }}</td>
+          <td>
+            {% if module['Links'] %}
+              <a href="{{ module['Links'] }}" target="_blank" class="details-link">Visit</a>
+            {% else %}
+              N/A
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="button-group">
+      <a href="{{ url_for('modules.results', course=course) }}" class="back-button nav-btn">
+        <i class="fas fa-arrow-left"></i> Back to Results
+      </a>
+    </div>
+  </div>
+</body>
+</html>

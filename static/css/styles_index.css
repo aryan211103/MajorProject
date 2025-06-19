@@ -1,0 +1,558 @@
+/* Smooth scrolling and scroll-margin for anchors */
+html {
+  scroll-behavior: smooth;
+}
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* ============================
+   Variables & Base Styles
+=============================== */
+:root {
+  --primary-color: #3498db;
+  --primary-hover: #2980b9;
+  --secondary-color: #2ecc71;
+  --secondary-hover: #27ae60;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  --font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Headings */
+h1 {
+  margin: 0;
+  color: #f9f7f7;
+}
+h2, h3 {
+  margin: 0;
+  color: #000;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================
+     Loading Overlay & Spinner
+=============================== */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2c3e50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+
+#loading-overlay.loaded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Modern Circular Loader */
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ============================
+     Navigation Bar
+=============================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: box-shadow 0.3s ease;
+}
+.navbar:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+.nav-links li a {
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.nav-links li a:hover {
+  background: var(--primary-color);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.auth-buttons .btn {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: var(--primary-color);
+  color: #fff;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.auth-buttons .btn:hover {
+  background: var(--primary-hover);
+  transform: scale(1.05);
+}
+.btn-secondary {
+  background: var(--light-color);
+  color: #333;
+  transition: background 0.3s ease;
+}
+.btn-secondary:hover {
+  background: #bdc3c7;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo img {
+  max-width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ============================
+     Video Background & Hero Section
+=============================== */
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* The overlay now gets a subtle animated gradient and will move with the mouse */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 110%;
+  background: linear-gradient(45deg, rgba(0,0,0,0.2), transparent);
+  pointer-events: none;
+  transition: transform 0.5s ease;
+}
+
+/* Hero Section */
+header {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+  height: 74vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  /* Animated gradient background */
+  background: linear-gradient(135deg, #2980b9, #6dd5fa, #ffffff);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.header-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: dropIn 1.5s forwards;
+}
+header p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  color: #f0f0f0;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeUp 1s forwards;
+  animation-delay: 1s;
+}
+@keyframes dropIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================
+     How It Works Section
+=============================== */
+.process {
+  padding: 50px 20px;
+  text-align: center;
+  background: #fff;
+}
+.process h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.step {
+  background: var(--light-color);
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.step:hover {
+  transform: translateY(-5px);
+}
+.step img {
+  max-width: 100px;
+  margin-bottom: 15px;
+}
+
+/* ============================
+     Courses Section (with 3D & Micro Interactions)
+=============================== */
+#courses {
+  padding: 50px 20px;
+  background: #f4f4f4;
+}
+#courses h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.course-card {
+  perspective: 1000px;
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform-style: preserve-3d;
+}
+.course-card:hover {
+  transform: rotateY(8deg) translateY(-10px);
+  background-color: #ecf0f1;
+}
+.course-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+.course-card h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+.course-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+.course-card .btn-primary {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+.course-card .btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+/* ============================
+     Quiz Section
+=============================== */
+#quiz {
+  padding: 50px 20px;
+  background: linear-gradient(to right, #f0f4f9, #e8eff5);
+  text-align: center;
+}
+#quiz .quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#quiz .quiz-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+#quiz p {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+#quiz .btn-primary {
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#quiz .btn-primary:hover {
+  background: var(--primary-hover);
+  transform: scale(1.05);
+}
+#quiz .quiz-locked {
+  border: 2px dashed var(--primary-color);
+  border-radius: 12px;
+  padding: 20px;
+  background: #ecf7ff;
+}
+#quiz .quiz-locked p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+#quiz .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--secondary-color);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#quiz .btn:hover {
+  background: var(--secondary-hover);
+  transform: scale(1.05);
+}
+#quiz .btn-secondary {
+  background: #e74c3c;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+#quiz .btn-secondary:hover {
+  background: #c0392b;
+}
+
+/* ============================
+     Footer
+=============================== */
+footer {
+  text-align: center;
+  background: var(--dark-color);
+  color: #fff;
+  padding: 20px 0;
+  margin-top: 50px;
+}
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ============================
+     Responsive Design
+=============================== */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .steps, .course-grid {
+    flex-direction: column;
+  }
+  #quiz {
+    padding: 30px 15px;
+  }
+  #quiz .quiz-container {
+    padding: 20px;
+  }
+  #quiz p {
+    font-size: 1rem;
+  }
+}
+
+/* ============================
+     Additional Utility Classes
+=============================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.btn.disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  color: #fff;
+  opacity: 0.7;
+  pointer-events: none;
+}
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Video container behind the content but above particles if desired */
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Optional overlay to blend video and particles */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 2;
+}
+/* User Dropdown Menu */
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  /* Increase the font size and set button dimensions */
+  font-size: 2.5rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* Show dropdown menu on hover */
+.user-dropdown:hover .dropdown-menu {
+  display: block;
+}
+

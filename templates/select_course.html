@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_select_quiz.css') }}">
+    <!-- Google Fonts for Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Select Your Quiz</h1>
+            <p>Choose a course to test your knowledge and skills.</p>
+        </div>
+    </header>
+
+    <section class="quiz-container">
+        <div class="grid">
+            {% for course in courses %}
+            <div class="quiz-card">
+                <div class="card-content">
+                    <div class="course-icon">
+                        <i class="fas fa-book"></i> <!-- Default icon, can be customized per course -->
+                    </div>
+                    <h2>{{ course.name }}</h2>
+                    <p>{{ course.description }}</p>
+                    <div class="quiz-options">
+                        <button onclick="startQuiz('{{ course.name }}')">
+                            Start Quiz <span class="arrow">&rarr;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <script>
+       function startQuiz(course) {
+    fetch('/start_quiz', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ course: course }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.redirect) {
+            window.location.href = data.redirect;
+        }
+    })
+    .catch(error => {
+        console.error('Error starting quiz:', error);
+    });
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Increase container size to accommodate all features */
+.container {
+  position: relative;
+  width: 1100px;
+  height: 600px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Forms Container */
+.forms-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.signin-signup {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Sign In Form (fixed on left) */
+.sign-in-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  padding: 50px;
+  z-index: 1;
+}
+
+/* Sign Up Form (fixed on right) */
+.sign-up-form {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  padding: 50px;
+  z-index: 1;
+}
+
+/* Input Fields */
+.input-field {
+  width: 100%;
+  margin: 15px 0;
+  position: relative;
+}
+.input-field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+.input-field i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.password-toggle {
+  cursor: pointer;
+}
+
+.password-toggle i {
+  font-size: 1.4em;  /* increased size */
+  color: #666;       /* slightly lighter for better contrast */
+}
+/* Form Options */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+.remember-me input {
+  margin-right: 5px;
+}
+.forgot-password {
+  color: #667eea;
+  text-decoration: none;
+}
+
+/* Buttons */
+.btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border: none;
+  background: #667eea;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.btn:hover {
+  background: #4a63d0;
+}
+.btn.solid {
+  background: #667eea;
+}
+
+/* Loading Animation */
+.btn.loading {
+  position: relative;
+  pointer-events: none;
+}
+.btn.loading::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 3px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Social Media */
+.social-text {
+  margin: 20px 0;
+  font-size: 14px;
+}
+.social-media {
+  display: flex;
+  justify-content: center;
+}
+.social-icon {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.social-icon:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+/* Panels Container (Overlay) */
+.panels-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.1s;
+  z-index: 2;
+}
+/* When sign-up-mode is active, slide the panel completely to the left (101%) */
+.container.sign-up-mode .panels-container {
+  transform: translateX(-101%);
+}
+
+/* Panel Content */
+.panel-content {
+  color: #fff;
+}
+.panel-content h3 {
+  margin-bottom: 10px;
+}
+.panel-content p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Image Placeholder */
+.image-placeholder {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Dark Mode Toggle Styles
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin-left: 10px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #667eea;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Optional: Style the dark mode icon next to the toggle */
+/* .theme-toggle i {
+  font-size: 1.5em;
+  color: #667eea;
+  vertical-align: middle;
+} */ 
+.error-message {
+  background-color: #ffdddd;
+  color: #a94442;
+  padding: 10px;
+  border: 1px solid #a94442;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}

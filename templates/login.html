@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In &amp; Sign Up - Personalized Module Recommendation System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_sliding.css') }}">
+  <!-- FontAwesome for icons (Using kit) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <!-- Anime.js for smooth animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" crossorigin="anonymous"></script>
+  <!-- Lottie for animations -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body>
+  <!-- Add sign-up-mode class to display the sign-up view initially -->
+  <div class="container {% if show_signup %}sign-up-mode{% endif %}" id="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <!-- Sign In Form (fixed on left) -->
+        <form action="{{ url_for('auth.login') }}" method="POST" class="sign-in-form">
+          <h2 class="title">Welcome Back! 👋</h2>
+          {% if error_message %}
+            <div class="error-message">{{ error_message }}</div>
+          {% endif %}
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Email" name="email" required />
+          </div>
+          <div class="input-field">
+            <!-- Removed lock icon -->
+            <input type="password" placeholder="Password" name="password" required />
+            <span class="password-toggle"><i class="fas fa-eye"></i></span>
+          </div>
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" name="remember" />
+              Remember me
+            </label>
+            <a href="#forgot-password" class="forgot-password">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn solid">Sign In</button>
+          <p class="social-text">Or sign in with</p>
+          <div class="social-media">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </form>
+        <!-- Sign Up Form (fixed on right) -->
+        <form action="{{ url_for('auth.signup') }}" method="POST" class="sign-up-form">
+          <h2 class="title">Get Started 🚀</h2>
+          {% if errors %}
+            <div class="error-message">
+              {% for field, error in errors.items() %}
+                <p>{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Full Name" name="name" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Email" name="email" required />
+          </div>
+          <div class="input-field">
+            <!-- Removed lock icon -->
+            <input type="password" placeholder="Password" name="password" required />
+            <span class="password-toggle"><i class="fas fa-eye"></i></span>
+          </div>
+          <div class="input-field">
+            <!-- Removed lock icon -->
+            <input type="password" placeholder="Confirm Password" name="confirm-password" required />
+            <span class="password-toggle"><i class="fas fa-eye"></i></span>
+          </div>
+          <button type="submit" class="btn solid">Create Account</button>
+          <p class="social-text">Or sign up with</p>
+          <div class="social-media">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Panel Overlay -->
+    <div class="panels-container" id="panel">
+      <div class="panel-content" id="panel-content">
+        {% if show_signup %}
+          <h3 id="panel-title">Already a Member?</h3>
+          <p id="panel-text">Sign in to access your dashboard and explore personalized content.</p>
+          <button class="btn transparent" id="panel-button">Sign In</button>
+          <div class="image-placeholder" id="panel-image">
+            <!-- Lottie Animation for Sign In state (centered) -->
+            <lottie-player 
+              src="{{ url_for('static', filename='lottie/Animation.json') }}" 
+              background="transparent" 
+              speed="1" 
+              style="width: 300px; height: 300px;" 
+              autoplay 
+              loop>
+            </lottie-player>
+          </div>
+        {% else %}
+          <h3 id="panel-title">New to Our Platform?</h3>
+          <p id="panel-text">Join our learning community and unlock personalized educational pathways.</p>
+          <button class="btn transparent" id="panel-button">Create Account</button>
+          <div class="image-placeholder" id="panel-image">
+            <!-- Lottie Animation for Sign Up state (centered) -->
+            <lottie-player 
+              src="{{ url_for('static', filename='lottie/Animation.json') }}" 
+              background="transparent" 
+              speed="1" 
+              style="width: 300px; height: 300px;" 
+              autoplay 
+              loop>
+            </lottie-player>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Lottie animation URLs
+    const signUpAnimationUrl = "{{ url_for('static', filename='lottie/Animation.json') }}";
+    const signInAnimationUrl = "{{ url_for('static', filename='lottie/Animation.json') }}";
+    
+    const container = document.getElementById('container');
+    const panel = document.getElementById('panel');
+    const panelButton = document.getElementById('panel-button');
+    const panelTitle = document.getElementById('panel-title');
+    const panelText = document.getElementById('panel-text');
+    const panelImage = document.getElementById('panel-image');
+    
+    // Overlay Panel Button: always triggers slide.
+    panelButton.addEventListener('click', () => {
+      slidePanel();
+    });
+    
+    // Sign-up form submission: only trigger slide if no error messages exist.
+    const signUpForm = document.querySelector('.sign-up-form');
+    signUpForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errorContainer = signUpForm.querySelector('.error-message');
+      if (errorContainer && errorContainer.innerText.trim() !== "") {
+        // Do not slide if errors exist.
+        return;
+      }
+      const btn = signUpForm.querySelector('.btn');
+      btn.classList.add('loading');
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      btn.classList.remove('loading');
+      slidePanel();
+      signUpForm.submit();
+    });
+    
+    function slidePanel() {
+      container.classList.toggle('sign-up-mode');
+      anime({
+        targets: panel,
+        translateX: container.classList.contains('sign-up-mode') ? '-101%' : '0%',
+        duration: 700,
+        easing: 'easeInOutQuad'
+      });
+      
+      if (container.classList.contains('sign-up-mode')) {
+        panelTitle.textContent = "Already a Member?";
+        panelText.textContent = "Sign in to access your dashboard and explore personalized content.";
+        panelButton.textContent = "Sign In";
+        panelImage.innerHTML = '<lottie-player src="' + signInAnimationUrl + '" background="transparent" speed="1" style="width: 300px; height: 300px;" autoplay loop></lottie-player>';
+      } else {
+        panelTitle.textContent = "New to Our Platform?";
+        panelText.textContent = "Join our learning community and unlock personalized educational pathways.";
+        panelButton.textContent = "Create Account";
+        panelImage.innerHTML = '<lottie-player src="' + signUpAnimationUrl + '" background="transparent" speed="1" style="width: 300px; height: 300px;" autoplay loop></lottie-player>';
+      }
+    }
+    
+    // Password Visibility Toggle Functionality
+    document.querySelectorAll('.password-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function () {
+        const input = this.previousElementSibling;
+        input.type = input.type === 'password' ? 'text' : 'password';
+        this.innerHTML = input.type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+      });
+    });
+    
+    // Clear error messages on input change in sign-up form.
+    document.querySelectorAll('.sign-up-form input').forEach(input => {
+      input.addEventListener('input', () => {
+        const errorContainer = document.querySelector('.sign-up-form .error-message');
+        if (errorContainer) {
+          errorContainer.innerHTML = "";
+        }
+      });
+    });
+  </script>  
+</body>
+</html>

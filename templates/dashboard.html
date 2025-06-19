@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_dashboard.css') }}" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Lottie (for animated illustrations) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
+  <!-- jQuery for partial reload -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Chart.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- GSAP for advanced animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <!-- Anime.js for additional animation effects -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <!-- Using a Font Awesome icon as the user image -->
+        <i class="fas fa-user-circle" style="font-size: 80px; display: block; margin: 0 auto;"></i>
+        <span>{{ user.name if user else "User" }}</span>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="menu-item active" data-section="profile">
+          <i class="fas fa-user"></i>
+          <span>Your Profile</span>
+        </li>
+        <li class="menu-item" data-section="quiz">
+          <i class="fas fa-question-circle"></i>
+          <span>Your Quiz</span>
+        </li>
+        <li class="menu-item" data-section="recommendations">
+          <i class="fas fa-bookmark"></i>
+          <span>Recommendations</span>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+      <!-- Profile Section -->
+      <section id="profile" class="content-section active">
+        <!-- Container for Welcome & Profile Details side by side -->
+        <div class="profile-header-container">
+          <div class="welcome-container">
+            <h2 class="welcome-heading">Welcome, {{ user.name if user else "User" }}!</h2>
+          </div>
+          <div class="profile-container">
+            <h3>Your Profile</h3>
+            <div class="profile-details">
+              <p><strong>Name:</strong> {{ user.name if user else "N/A" }}</p>
+              <p><strong>Email:</strong> {{ user.email if user else "N/A" }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- Additional Form Details below -->
+        <div class="form-data-container">
+          <h3>Form Details</h3>
+          <div class="form-details">
+            <p><strong>Full Name:</strong> {{ user.name if user else "N/A" }}</p>
+            <p><strong>GPA:</strong> {{ user.gpa if user else "N/A" }}</p>
+            <p><strong>Degree:</strong> {{ user.degree if user else "N/A" }}</p>
+            <p><strong>Skills:</strong> {{ ", ".join(user.skills) if user and user.skills else "N/A" }}</p>
+            <p><strong>GRE Score:</strong> {{ user.gre if user else "N/A" }}</p>
+            <p><strong>IELTS Score:</strong> {{ user.ielts if user else "N/A" }}</p>
+            <p><strong>TOEFL Score:</strong> {{ user.toefl if user else "N/A" }}</p>
+            <p><strong>Internship Duration:</strong> {{ user.internship_duration if user else "N/A" }} months</p>
+            <p><strong>Research Papers:</strong> {{ user.research_papers if user else "N/A" }}</p>
+            <p><strong>Job Experience:</strong> {{ user.job_experience if user else "N/A" }}</p>
+            <p><strong>Extra Curricular Activities:</strong> {{ user.extra_curricular if user else "N/A" }}</p>
+            <p><strong>Language Ratings:</strong></p>
+            <ul>
+              {% if user and user.Languages %}
+                {% for language, rating in user.Languages.items() %}
+                  <li><strong>{{ language }}:</strong> {{ rating }}/10</li>
+                {% endfor %}
+              {% else %}
+                <li>N/A</li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quiz Section with Course Filter -->
+      <section id="quiz" class="content-section">
+        <h3>Your Quiz Attempts</h3>
+        <div class="course-filter">
+          <label for="courseSelect">Select Course:</label>
+          <select id="courseSelect">
+            {% for course in courses %}
+              <option value="{{ course }}" {% if course == selected_course %}selected{% endif %}>{{ course }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div id="quizSection">
+          <div class="quiz-container">
+            <div class="quiz-attempt sliding-window">
+              {% if quiz_attempts %}
+                {% for attempt in quiz_attempts[:5] %}
+                <div class="attempt">
+                  <p><strong>Course:</strong> {{ attempt.course }}</p>
+                  <p><strong>Beginner:</strong> {{ attempt.beginner_correct }}</p>
+                  <p><strong>Intermediate:</strong> {{ attempt.intermediate_correct }}</p>
+                  <p><strong>Expert:</strong> {{ attempt.expert_correct }}</p>
+                  <p><strong>Date:</strong> {{ attempt.timestamp | datetimeformat }}</p>
+                </div>
+                {% endfor %}
+              {% else %}
+                <p>No quiz attempts available.</p>
+              {% endif %}
+            </div>
+            <div class="chart-wrapper">
+              <div class="chart-container line-chart-container">
+                <h4>Overall Progress</h4>
+                <div id="quizChartData" style="display:none;">{{ quiz_chart_data | tojson | safe }}</div>
+                <canvas id="quizChart"></canvas>
+              </div>
+              <div class="chart-container bar-chart-container">
+                <h4>Recent 5 Attempts - Breakdown</h4>
+                <div id="groupedChartData" style="display:none;">{{ grouped_chart_data | tojson | safe }}</div>
+                <canvas id="quizBarChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommendations Section -->
+      <section id="recommendations" class="content-section">
+        <h3>Recommendations For You</h3>
+        <div class="recommendation-grid">
+          <!-- Top Recommended University with Save Button -->
+          <div class="recommendation-item" id="topRecommendation">
+            <h4>Top Recommended University</h4>
+            {% if top_recommended %}
+              <p class="top-uni">{{ top_recommended }}</p>
+              <p>We highly recommend you consider applying to this university.</p>
+              <!-- Save Button -->
+              <button id="saveUniversityButton" onclick="saveUniversity('{{ top_recommended }}')" style="margin-top: 10px; padding: 8px 12px; background: var(--accent-color); color: #fff; border: none; border-radius: 4px; cursor: pointer; transition: background var(--transition-speed) ease;">Save University</button>
+            {% else %}
+              <p>No recommendation available.</p>
+            {% endif %}
+          </div>
+          <!-- Saved Colleges -->
+          <div class="recommendation-item" id="savedColleges">
+            <h4>Saved Colleges</h4>
+            {% if saved_universities %}
+              <ul class="saved-list">
+                {% for college in saved_universities %}
+                  <li>{{ college }}</li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p>No saved colleges.</p>
+            {% endif %}
+          </div>          
+          <!-- Recommended Modules (Table Format with Scrolling) -->
+          <div class="recommendation-item" id="recommendedModules">
+            <h4>Recommended Modules</h4>
+            {% if recommended_modules %}
+            <div class="modules-table-container">
+              <table class="modules-table">
+                <thead>
+                  <tr>
+                    <th>Module</th>
+                    <th>Difficulty</th>
+                    <th>Link</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for module in recommended_modules %}
+                  <tr>
+                    <td>{{ module.name if module.name else module.Module }}</td>
+                    <td>{{ module.Difficulty }}</td>
+                    <td>
+                      {% if module.Links %}
+                        <a class="view-button" href="{{ module.Links }}" target="_blank">View</a>
+                      {% else %}
+                        N/A
+                      {% endif %}
+                    </td>
+                    <td>
+                      <input type="checkbox" class="module-checkbox" id="module_{{ module.Module|replace(' ', '_') }}" data-module="{{ module.name if module.name else module.Module }}" />
+                      <label for="module_{{ module.Module|replace(' ', '_') }}">Complete</label>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% else %}
+              <p>No modules recommended.</p>
+            {% endif %}
+          </div>
+          <!-- Module Completion Pie Chart with 3D Effects -->
+          <div class="recommendation-item" id="moduleCompletion">
+            <h4>Module Completion</h4>
+            <div class="pie-chart-wrapper">
+              <canvas id="modulesPieChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- JavaScript for Sidebar Navigation -->
+  <script>
+    document.querySelectorAll('.sidebar-menu .menu-item').forEach(item => {
+      item.addEventListener('click', function () {
+        document.querySelectorAll('.sidebar-menu .menu-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+        const sectionId = this.getAttribute('data-section');
+        document.getElementById(sectionId).classList.add('active');
+      });
+    });
+  </script>
+
+  <!-- JavaScript for Course Filter with Partial Reload -->
+  <script>
+    $('#courseSelect').on('change', function() {
+      var selectedCourse = $(this).val();
+      var url = '/dashboard';
+      if (selectedCourse) {
+        url += '?course=' + encodeURIComponent(selectedCourse);
+      }
+      $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'html',
+        success: function(data) {
+          var newQuizSection = $(data).find('#quizSection').html();
+          var newRecommendations = $(data).find('#recommendations').html();
+          $('#quizSection').html(newQuizSection);
+          $('#recommendations').html(newRecommendations);
+          window.modulesPieChart = null;
+          setTimeout(function(){
+            initCharts();
+            persistCheckboxState();
+            updatePieChart();
+          }, 100);
+          history.replaceState({}, '', url);
+        },
+        error: function() {
+          alert("Failed to load updated content. Please try again.");
+        }
+      });
+    });
+
+    window.onpopstate = function() {
+      window.location.href = '/';
+    };
+  </script>
+
+  <!-- JavaScript to Initialize Charts, Enhance Pie Chart, and Persist Checkbox State -->
+  <script>
+    Chart.register({
+      id: 'pieShadow',
+      beforeDraw: function(chart) {
+        if (chart.config.type === 'pie') {
+          const ctx = chart.ctx;
+          ctx.save();
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+          ctx.shadowBlur = 10;
+          ctx.shadowOffsetX = 5;
+          ctx.shadowOffsetY = 5;
+        }
+      },
+      afterDraw: function(chart) {
+        if (chart.config.type === 'pie') {
+          chart.ctx.restore();
+        }
+      }
+    });
+
+    function initCharts() {
+      var quizChartData = JSON.parse(document.getElementById('quizChartData').textContent);
+      var groupedChartData = JSON.parse(document.getElementById('groupedChartData').textContent);
+      console.log("Quiz Chart Data:", quizChartData);
+      console.log("Grouped Chart Data:", groupedChartData);
+
+      var ctx = document.getElementById('quizChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: quizChartData.labels,
+          datasets: [{
+            label: 'Final Score',
+            data: quizChartData.scores,
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            fill: true,
+            tension: 0.2
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true, max: 10 }
+          }
+        }
+      });
+
+      var ctxBar = document.getElementById('quizBarChart').getContext('2d');
+      new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+          labels: groupedChartData.labels,
+          datasets: [
+            {
+              label: 'Beginner',
+              data: groupedChartData.beginner,
+              backgroundColor: 'rgba(75, 192, 192, 0.6)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+            },
+            {
+              label: 'Intermediate',
+              data: groupedChartData.intermediate,
+              backgroundColor: 'rgba(255, 205, 86, 0.6)',
+              borderColor: 'rgba(255, 205, 86, 1)',
+              borderWidth: 1
+            },
+            {
+              label: 'Expert',
+              data: groupedChartData.expert,
+              backgroundColor: 'rgba(255, 99, 132, 0.6)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true, max: 10 }
+          }
+        }
+      });
+    }
+
+    function updatePieChart() {
+      var canvasElem = document.getElementById('modulesPieChart');
+      if (!canvasElem) return;
+
+      var totalModules = $('.module-checkbox').length;
+      var completedModules = $('.module-checkbox:checked').length;
+      var remainingModules = totalModules - completedModules;
+      var pieData = [completedModules, remainingModules];
+      var pieLabels = ["Completed", "Remaining"];
+
+      if (window.modulesPieChart && window.modulesPieChart.data && window.modulesPieChart.data.datasets) {
+        window.modulesPieChart.data.datasets[0].data = pieData;
+        window.modulesPieChart.update();
+      } else {
+        var ctxPie = canvasElem.getContext('2d');
+        window.modulesPieChart = new Chart(ctxPie, {
+          type: 'pie',
+          data: {
+            labels: pieLabels,
+            datasets: [{
+              data: pieData,
+              backgroundColor: [
+                'rgba(46, 204, 113, 0.8)',
+                'rgba(231, 76, 60, 0.8)'
+              ],
+              borderColor: [
+                'rgba(46, 204, 113, 1)',
+                'rgba(231, 76, 60, 1)'
+              ],
+              borderWidth: 2,
+              hoverOffset: 10
+            }]
+          },
+          options: {
+            responsive: true,
+            animation: { animateRotate: true, animateScale: true },
+            plugins: {
+              legend: { position: 'bottom' },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    let label = context.label || '';
+                    let value = context.raw;
+                    return label + ': ' + value;
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    function persistCheckboxState() {
+      $('.module-checkbox').each(function() {
+        var moduleId = $(this).attr('id');
+        var storedState = localStorage.getItem(moduleId);
+        if (storedState === 'true') {
+          $(this).prop('checked', true);
+        }
+      });
+    }
+
+    function saveCheckboxState(checkbox) {
+      var moduleId = $(checkbox).attr('id');
+      localStorage.setItem(moduleId, $(checkbox).is(':checked'));
+    }
+
+    $(document).ready(function() {
+      persistCheckboxState();
+      initCharts();
+      updatePieChart();
+      $(document).on('change', '.module-checkbox', function() {
+        updatePieChart();
+        saveCheckboxState(this);
+      });
+    });
+  </script>
+
+  <!-- Lottie Animation Initialization -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      lottie.loadAnimation({
+        container: document.getElementById('lottieSidebar'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/static/animations/sidebar_animation.json'
+      });
+    });
+  </script>
+
+  <!-- AJAX call for saving a university -->
+  <!-- AJAX call for saving a university -->
+<script>
+  function saveUniversity(selectedUniversity) {
+    $.ajax({
+      url: '/save_university',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({ choice: selectedUniversity }),
+      success: function(response) {
+        // Update only the inner <ul> of saved colleges.
+        if(response.saved_universities && response.saved_universities.length > 0) {
+          $('#savedColleges .saved-list').html(
+            response.saved_universities.map(function(college) {
+              return '<li>' + college + '</li>';
+            }).join('')
+          );
+        } else {
+          // If no saved colleges exist, show a placeholder message.
+          $('#savedColleges').html('<p>No saved colleges.</p>');
+        }
+      },
+      error: function() {
+        alert("Failed to save the university. Please try again.");
+      }
+    });
+  }
+</script>
+</body>
+</html>

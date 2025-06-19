@@ -1,0 +1,165 @@
+/* General Body */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f5f7fa, #e2e8f0);
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    background-color: #ffffff;
+    padding: 40px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header .header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 400;
+}
+
+/* Quiz Container */
+.quiz-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.quiz-container .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+    align-items: stretch;
+}
+
+/* Quiz Card */
+.quiz-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    height: 380px;
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Course Icon */
+.quiz-card .course-icon {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+/* Card Content */
+.quiz-card .card-content {
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.quiz-card h2 {
+    font-size: 1.6rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.quiz-card p {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+/* Button */
+.quiz-card button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%;
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+.quiz-card button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.quiz-card .arrow {
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .quiz-container {
+        padding: 10px;
+    }
+
+    .quiz-card {
+        height: 360px;
+        width: 100%;
+    }
+
+    .quiz-container .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .quiz-card h2 {
+        font-size: 1.4rem;
+    }
+
+    .quiz-card button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

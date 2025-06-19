@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admission Probability Analysis</title>
+  <!-- Include Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_result1.css') }}">
+</head>
+<body>
+  <div class="results-container">
+    <h2 class="results-header">Admission Probability Analysis</h2>
+    
+    <div class="results-summary">
+      <div class="summary-card fade-in">
+        <i class="fas fa-chart-pie summary-icon"></i>
+        <h3>Average Probability</h3>
+        <p class="highlight">{{ average_probability }}%</p>
+      </div>
+      <div class="summary-card fade-in">
+        <i class="fas fa-trophy summary-icon"></i>
+        <h3>Highest Chance</h3>
+        <p class="highlight">{{ top_choice[0] }}</p>
+        <p>{{ top_choice[1] }}%</p>
+      </div>
+    </div>
+
+    <div class="sort-controls">
+      <label for="sort-select">Sort by:</label>
+      <select id="sort-select" class="sort-select" onchange="sortResults(this.value)">
+        <option value="probability-desc">Highest Probability</option>
+        <option value="probability-asc">Lowest Probability</option>
+        <option value="alphabetical">Alphabetical</option>
+      </select>
+    </div>
+
+    <div class="results-grid">
+      {% for key, value in predictions.items() %}
+      <div class="result-card slide-in">
+        <div class="university-info">
+          <h3 class="university-name">{{ key }}</h3>
+          <div class="probability-meter">
+            <div class="probability-bar" style="width: {{ value | default(0) | int }}%;">
+              <span class="probability-value">{{ value | default(0) | int }}%</span>
+            </div>
+          </div>
+          <div class="probability-tags">
+            <span class="tag {% if value >= 70 %}high-chance{% elif value >= 40 %}medium-chance{% else %}low-chance{% endif %}">
+              {% if value >= 70 %}High Chance{% elif value >= 40 %}Medium Chance{% else %}Low Chance{% endif %}
+            </span>
+            {% if value >= 80 %}
+            <span class="tag recommended">Recommended</span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="action-buttons">
+          <button class="save-btn" onclick="saveChoice('{{ key }}')">
+            <i class="far fa-bookmark"></i> Save
+          </button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="navigation-actions">
+      <a href="{{ url_for('modules.select_university') }}" class="nav-btn retry-btn glow-on-hover">
+        <i class="fas fa-redo-alt"></i> Other Universities &amp; Degrees
+      </a>
+      <a href="{{ url_for('auth.home') }}" class="nav-btn home-btn glow-on-hover">
+        <i class="fas fa-home"></i> Home
+      </a>
+      <a href="{{ url_for('quiz.select_course') }}" class="nav-btn quiz-btn glow-on-hover">
+        <i class="fas fa-question-circle"></i> Take the Quiz
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function sortResults(criteria) {
+      const container = document.querySelector('.results-grid');
+      const cards = Array.from(container.children);
+      
+      cards.sort((a, b) => {
+          const aVal = parseInt(a.querySelector('.probability-value').textContent);
+          const bVal = parseInt(b.querySelector('.probability-value').textContent);
+          const aText = a.querySelector('.university-name').textContent.toLowerCase();
+          const bText = b.querySelector('.university-name').textContent.toLowerCase();
+  
+          switch(criteria) {
+              case 'probability-desc': return bVal - aVal;
+              case 'probability-asc': return aVal - bVal;
+              case 'alphabetical': return aText.localeCompare(bText);
+          }
+      });
+  
+      container.innerHTML = '';
+      cards.forEach(card => container.appendChild(card));
+    }
+  
+    function saveChoice(choice) {
+      console.log('Saved:', choice);
+      alert('Choice saved to your profile!');
+    }
+    
+    // Automatically sort by highest probability on page load:
+    document.addEventListener('DOMContentLoaded', () => {
+      sortResults('probability-desc');
+    });
+  </script>
+</body>
+</html>

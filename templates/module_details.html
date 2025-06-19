@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Modules</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_module_details.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Recommended Modules</h1>
+    </header>
+
+    <section class="module-content">
+        {% for module in all_modules %}
+        <div class="module-header">
+            <h2>{{ module['Module'] }}</h2>
+            <p class="course-info"><strong>Course:</strong> {{ module['Course'] }}</p>
+            <p class="difficulty"><strong>Difficulty:</strong> {{ module['Difficulty'] }}</p>
+        </div>
+        
+        <div class="module-description">
+            <h3>Description</h3>
+            <p>{{ module['Description'] }}</p>
+        </div>
+        <hr>
+        {% endfor %}
+
+        <div class="actions">
+            <a href="{{ url_for('auth.home') }}" class="btn">Back to Home</a>
+        </div>
+    </section>
+</body>
+</html>

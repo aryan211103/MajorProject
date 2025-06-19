@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personalized Module Recommendation System</title>
+  
+  <!-- Meta Description for SEO -->
+  <meta name="description" content="Embark on a transformative educational journey with our Personalized Module Recommendation System. Powered by advanced algorithms and immersive 3D animations, our platform features a dynamic, tech-inspired background that adapts to your unique learning style. Discover tailored course recommendations and an engaging, interactive experience designed just for you." />  
+  
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_index.css') }}" />
+
+  <!-- GSAP for advanced animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-..." crossorigin="anonymous"></script>
+
+  <!-- Particles.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <!-- AOS (Animate on Scroll) CSS -->
+  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
+
+  <!-- AOS (Animate on Scroll) JS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+</head>
+<body>
+  <!-- Loading Overlay -->
+  <div id="loading-overlay">
+    <div class="loader"></div>
+  </div>
+  
+  <!-- Navigation Bar -->
+  <nav class="navbar" data-aos="fade-down" data-aos-duration="1000">
+    <div class="navbar-container">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo3.png') }}" alt="Logo" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#courses" class="nav-link">Courses</a></li>
+        <li>
+          {% if is_logged_in %}
+            <a href="{{ url_for('auth.form') }}">Form</a>
+          {% else %}
+            <a href="#" onclick="alert('Please log in or sign up to fill out your profile!')">Form</a>
+          {% endif %}
+        </li>
+        <li><a href="#quiz" class="nav-link">Quiz</a></li>
+        <!-- <li><a href="#contact" class="nav-link">Contact</a></li> -->
+      </ul>
+      <div class="auth-buttons">
+        {% if is_logged_in %}
+          <div class="user-dropdown">
+            <button class="dropdown-toggle">
+              <!-- Using Font Awesome for user icon -->
+              <i class="fa-solid fa-circle-user"></i>
+            </button>
+            <div class="dropdown-menu">
+               <a href="{{ url_for('auth.dashboard') }}">Dashboard</a>
+               <a href="{{ url_for('auth.logout') }}">Logout</a>
+            </div>
+          </div>
+        {% else %}
+          <a href="{{ url_for('auth.login') }}" class="btn btn-secondary">Sign Up / Log In</a>
+        {% endif %}
+      </div>      
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home">
+    <!-- Particle canvas overlay -->
+    <div id="particles-js"></div>
+    
+    <!-- Video Background Container -->
+    <div class="video-container" data-aos="fade-in" data-aos-duration="1200">
+      <video autoplay loop muted playsinline>
+        <source src="{{ url_for('static', filename='videos/startpage.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <!-- Optional: a semi-transparent overlay can help blend the video and particles -->
+      <div class="video-overlay"></div>
+    </div>
+    
+    <!-- Header Content -->
+    <div class="header-content" data-aos="fade-up" data-aos-duration="1200">
+      <h1 class="animated-title" data-aos="zoom-in" data-aos-duration="1500">
+        Personalized Module Recommendation System
+      </h1>
+      <p data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+        Your journey to tailored learning starts here!
+      </p>
+    </div>
+  </header>
+  
+ <!-- How It Works Section -->
+ <section id="how-it-works" class="process" data-aos="fade-up" data-aos-duration="1000">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step" data-aos="zoom-in" data-aos-delay="100">
+      <img src="{{ url_for('static', filename='images/user.png') }}" alt="Step 1" />
+      <h3>Step 1: Profile</h3>
+      <p>Fill out a quick profile form to help us understand your skills and interests.</p>
+    </div>
+    <div class="step" data-aos="zoom-in" data-aos-delay="200">
+      <img src="{{ url_for('static', filename='images/quiz.png') }}" alt="Step 2" />
+      <h3>Step 2: Quiz</h3>
+      <p>Take a short quiz to assess your skill level in your selected area of interest.</p>
+    </div>
+    <div class="step" data-aos="zoom-in" data-aos-delay="300">
+      <img src="{{ url_for('static', filename='images/recommend.png') }}" alt="Step 3" />
+      <h3>Step 3: Recommendations</h3>
+      <p>Receive personalized module recommendations based on your profile and quiz results.</p>
+    </div>
+  </div>
+</section>
+  <!-- Courses Section -->
+  <section id="courses" data-aos="fade-up" data-aos-duration="1000">
+    <h2>Courses We Offer</h2>
+    <div class="course-grid">
+      <!-- Course cards remain unchanged, but you can replace images with Font Awesome icons if preferred -->
+      <div class="course-card" data-aos="flip-left">
+        <img src="{{ url_for('static', filename='images/icons/DevOps.png') }}" alt="DevOps" />
+        <h3>DevOps</h3>
+      </div>
+      <!-- (Other course cards continue similarly) -->
+      <div class="course-card" data-aos="flip-left" data-aos-delay="100">
+        <img src="{{ url_for('static', filename='images/icons/Mobile App Development.jpg') }}" alt="Mobile App Development" />
+        <h3>Mobile App Development</h3>
+      </div>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="200">
+        <img src="{{ url_for('static', filename='images/icons/IoT.png') }}" alt="IoT" />
+        <h3>IoT</h3>
+      </div>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="300">
+        <img src="{{ url_for('static', filename='images/icons/Software Engineering.png') }}" alt="Software Engineering" />
+        <h3>Software Engineering</h3>
+      </div>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="400">
+        <img src="{{ url_for('static', filename='images/icons/Data Science.png') }}" alt="Data Science" />
+        <h3>Data Science</h3>
+      </div>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="100">
+        <img src="{{ url_for('static', filename='images/icons/Cloud Computing.png') }}" alt="Cloud Computing" />
+        <h3>Cloud Computing</h3>
+      </div>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="200">
+        <img src="{{ url_for('static', filename='images/icons/Machine Learning.png') }}" alt="Machine Learning" />
+        <h3>Machine Learning</h3>
+      </div>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="300">
+        <img src="{{ url_for('static', filename='images/icons/AI.png') }}" alt="AI" />
+        <h3>AI</h3>
+      </div>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="100">
+        <img src="{{ url_for('static', filename='images/icons/UI_UX.webp') }}" alt="UI/UX Design" />
+        <h3>UI/UX Design</h3>
+      </div>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="200">
+        <img src="{{ url_for('static', filename='images/icons/Blockchain.jpg') }}" alt="Blockchain" />
+        <h3>Blockchain</h3>
+      </div>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="300">
+        <img src="{{ url_for('static', filename='images/icons/Web Development.png') }}" alt="Web Development" />
+        <h3>Web Development</h3>
+      </div>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="400">
+        <img src="{{ url_for('static', filename='images/icons/Cybersecurity.png') }}" alt="Cybersecurity" />
+        <h3>Cybersecurity</h3>
+      </div>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="100">
+        <img src="{{ url_for('static', filename='images/icons/Neural Networks.png') }}" alt="Neural Networks" />
+        <h3>Neural Networks</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz" data-aos="fade-up" data-aos-duration="1000">
+    <div class="quiz-container">
+      {% if form_filled %}
+        <p>Great! You’ve completed your profile. Select a course to start the quiz and receive tailored module recommendations.</p>
+        <a href="{{ url_for('quiz.select_course') }}" class="btn btn-primary" id="select-course-button">
+          Start Quiz
+        </a>
+      {% else %}
+        <div class="quiz-locked">
+          {% if is_logged_in %}
+            <p>Please fill out your profile form to unlock the quiz.</p>
+            <a href="{{ url_for('auth.form') }}" class="btn">Fill Out Profile</a>
+          {% else %}
+            <p>The quiz is locked. Log in or sign up to create a profile.</p>
+            <a href="{{ url_for('auth.signup') }}" class="btn">Sign Up</a>
+            <a href="{{ url_for('auth.login') }}" class="btn btn-secondary">Log In</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <p>&copy; <span id="current-year"></span> Personalized Module Recommendation System. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize AOS animations
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // Set current year in footer
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    });
+
+    // GSAP Entrance Animations for the header
+    document.addEventListener("DOMContentLoaded", function() {
+      gsap.from(".animated-title", {
+        duration: 1.5,
+        y: -200,
+        opacity: 0,
+        ease: "bounce.out"
+      });
+      gsap.from(".header-content p", {
+        duration: 1,
+        y: -50,
+        opacity: 0,
+        delay: 1.2,
+        ease: "power2.out"
+      });
+    });
+
+    // Mousemove Parallax on the video overlay
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      gsap.to('.video-overlay', { 
+        x: (x - 0.5) * 30, 
+        y: (y - 0.5) * 30, 
+        ease: "power2.out", 
+        duration: 0.5 
+      });
+    });
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 40,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          }
+        },
+        "opacity": {
+          "value": 0.7,
+          "random": false
+        },
+        "size": {
+          "value": 4,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 1.5,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": false
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 150,
+            "line_linked": {
+              "opacity": 0.4
+            }
+          }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // Hide the loading overlay when the page has fully loaded
+    window.addEventListener('load', () => {
+      const overlay = document.getElementById('loading-overlay');
+      overlay.classList.add('loaded');
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 500);
+    });
+  </script>
+</body>
+</html>

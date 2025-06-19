@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 2: Select Universities and Degrees</title>
+  <!-- Include Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_select_university.css') }}">
+</head>
+<body>
+  <div class="selection-container">
+    <form action="/select_university" method="POST" class="university-selection-form" id="universityForm">
+      <h2 class="form-step-header">Step 2: Select Universities and Degrees</h2>
+      
+      <!-- University Selection Section -->
+      <div class="selection-section university-selection">
+        <h3 class="selection-title">
+          <i class="fas fa-university"></i> Select Universities by Criteria
+          <span class="selection-counter" id="university-counter">0 selected</span>
+        </h3>
+        
+        <div class="category-grid">
+          {% for category, university_list in university_categories.items() %}
+          <div class="category-group fade-in">
+            <h4 class="category-title">{{ category }}</h4>
+            <div class="checkbox-group">
+              {% for university in university_list %}
+              <div class="custom-checkbox">
+                <input type="checkbox" name="universities" 
+                       value="{{ university }}" 
+                       id="uni-{{ category | replace(' ', '-') }}-{{ loop.index }}"
+                       class="university-checkbox"
+                       data-category="{{ category }}"
+                       onchange="handleUniversitySelection(this)">
+                <label for="uni-{{ category | replace(' ', '-') }}-{{ loop.index }}">
+                  <span class="checkmark"></span>
+                  {{ university }}
+                </label>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>            
+      </div>
+
+      <!-- Degree Selection Section -->
+      <div class="selection-section degree-selection">
+        <h3 class="selection-title">
+          <i class="fas fa-graduation-cap"></i> Select Degrees
+          <span class="selection-counter" id="degree-counter">0 selected</span>
+        </h3>
+        <div class="checkbox-grid">
+          {% for degree in degrees %}
+          <div class="custom-checkbox">
+            <input type="checkbox" name="degrees" 
+                   value="{{ degree }}" 
+                   id="deg-{{ loop.index }}"
+                   class="degree-checkbox"
+                   onchange="handleDegreeSelection(this)">
+            <label for="deg-{{ loop.index }}">
+              <span class="checkmark"></span>
+              {{ degree }}
+            </label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="submit" class="submit-button glow-on-hover">
+          Calculate Admission Probability
+          <i class="fas fa-chart-line button-icon"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // University selection handler: update the counter based on all checked university checkboxes
+    function handleUniversitySelection(checkbox) {
+      const counter = document.getElementById('university-counter');
+      const checked = document.querySelectorAll('.university-checkbox:checked').length;
+      counter.textContent = `${checked} selected`;
+    }
+
+    // Degree selection handler: update the counter based on all checked degree checkboxes
+    function handleDegreeSelection(checkbox) {
+      const counter = document.getElementById('degree-counter');
+      const checked = document.querySelectorAll('.degree-checkbox:checked').length;
+      counter.textContent = `${checked} selected`;
+    }
+
+    // Form submission validation
+    document.getElementById('universityForm').addEventListener('submit', function(e) {
+      const universitiesSelected = document.querySelectorAll('.university-checkbox:checked').length;
+      const degreesSelected = document.querySelectorAll('.degree-checkbox:checked').length;
+      if (universitiesSelected === 0) {
+        alert("Please select at least one university.");
+        e.preventDefault();
+        return;
+      }
+      if (degreesSelected === 0) {
+        alert("Please select at least one degree.");
+        e.preventDefault();
+        return;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz on {{ selected_course }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_quiz.css') }}">
+  <!-- Include Ace Editor -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.0/ace.js" integrity="sha512-..." crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="quiz-header">
+      <h1>Quiz on {{ selected_course }}</h1>
+      <p>Test your knowledge and skills in {{ selected_course }}!</p>
+      {% if section == 'aptitude' %}
+      <div class="quiz-timer">Time Left: <span id="timer">{{ "%02d:%02d" | format(time_limit // 60, time_limit % 60) }}</span></div>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if section == 'aptitude' %}
+  <!-- Aptitude Section -->
+  <div class="quiz-wrapper">
+    <!-- Left: Question Container -->
+    <div class="quiz-question-container">
+      <div id="question-display">
+        <h2>Aptitude Section (10 Marks)</h2>
+        {% for question in questions %}
+          <!-- Note: The backend provides a key "correct_answer" for each question -->
+          <div class="quiz-question" data-index="{{ loop.index0 }}" data-correct="{{ question['correct_answer'] }}" {% if loop.index0 != 0 %}style="display:none;"{% endif %}>
+            <h3>Q{{ loop.index }}: {{ question['question'] }}</h3>
+            <div class="quiz-options">
+              {% for option in question['options'] %}
+                <label class="quiz-option">
+                  <input type="radio" name="question_{{ question['_id'] }}" value="{{ option }}">
+                  {{ option }}
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="quiz-navigation">
+        <button id="prev-btn" class="nav-btn">Prev</button>
+        <button id="mark-btn" class="nav-btn">Mark for Review</button>
+        <button id="save-btn" class="nav-btn">Save and Next</button>
+      </div>
+    </div>
+
+    <!-- Right: Quiz Palette and Basic Instructions -->
+    <div class="quiz-palette">
+      <div class="timer-container">
+        Time Left: <span id="palette-timer">{{ "%02d:%02d" | format(time_limit // 60, time_limit % 60) }}</span>
+      </div>
+      <div class="palette-grid">
+        {% for question in questions %}
+          <div class="palette-item" data-index="{{ loop.index0 }}">{{ loop.index }}</div>
+        {% endfor %}
+      </div>
+      <div class="palette-info">
+        <p><span class="info-box marked-review"></span> Marked for Review (Blue)</p>
+        <p><span class="info-box saved"></span> Saved (Green)</p>
+        <p><span class="info-box unanswered"></span> Unanswered (White)</p>
+      </div>
+      <div class="quiz-description">
+        <p><strong>Marking Scheme:</strong> Each question carries 1 mark (Total 10 marks).</p>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+          <li>Read each question carefully and select the correct option.</li>
+          <li>If unsure, click "Mark for Review" to flag the question.</li>
+          <li>Click "Save and Next" to record your answer and proceed. (On the last question, the button will change to "Save".)</li>
+          <li>Once all questions are answered, click "Submit Quiz" to finish.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="submit-container">
+    <button id="submit-quiz-btn" class="submit-btn">Submit Quiz</button>
+  </div>
+
+  <!-- Aptitude Section Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let currentQuestionIndex = 0;
+      const questions = document.querySelectorAll(".quiz-question");
+      const totalQuestions = questions.length;
+      const prevBtn = document.getElementById("prev-btn");
+      const markBtn = document.getElementById("mark-btn");
+      const saveBtn = document.getElementById("save-btn");
+      const submitBtn = document.getElementById("submit-quiz-btn");
+      const paletteItems = document.querySelectorAll(".palette-item");
+
+      // Timer for palette
+      let timeLimit = parseInt("{{ time_limit }}", 10);
+      const paletteTimerDisplay = document.getElementById("palette-timer");
+      function startTimer(duration, display) {
+        let timer = duration, minutes, seconds;
+        const interval = setInterval(function () {
+          minutes = parseInt(timer / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+          display.textContent = minutes + ":" + seconds;
+          if (--timer < 0) {
+            clearInterval(interval);
+            submitQuiz(); // Auto-submit if time runs out
+          }
+        }, 1000);
+      }
+      startTimer(timeLimit, paletteTimerDisplay);
+
+      // Show question by index
+      function showQuestion(index) {
+        questions.forEach((q, i) => {
+          q.style.display = i === index ? "block" : "none";
+        });
+        currentQuestionIndex = index;
+        updateNavButtons();
+      }
+
+      // Update navigation button states
+      function updateNavButtons() {
+        prevBtn.disabled = currentQuestionIndex === 0;
+        if (currentQuestionIndex === totalQuestions - 1) {
+          saveBtn.textContent = "Save";
+        } else {
+          saveBtn.textContent = "Save and Next";
+        }
+        const currentQuestion = questions[currentQuestionIndex];
+        const selectedOption = currentQuestion.querySelector("input[type='radio']:checked");
+        markBtn.disabled = !selectedOption;
+        saveBtn.disabled = !selectedOption;
+      }
+
+      // Listen for changes to update buttons
+      questions.forEach(question => {
+        const options = question.querySelectorAll("input[type='radio']");
+        options.forEach(option => {
+          option.addEventListener("change", updateNavButtons);
+        });
+      });
+
+      // Button event: Prev
+      prevBtn.addEventListener("click", function () {
+        if (currentQuestionIndex > 0) showQuestion(currentQuestionIndex - 1);
+      });
+
+      // Button event: Mark for Review (marks palette item blue)
+      markBtn.addEventListener("click", function () {
+        const currentQuestion = questions[currentQuestionIndex];
+        const selectedOption = currentQuestion.querySelector("input[type='radio']:checked");
+        if (selectedOption) {
+          paletteItems[currentQuestionIndex].classList.remove("saved");
+          paletteItems[currentQuestionIndex].classList.add("marked-review");
+        }
+      });
+
+      // Button event: Save and Next / Save (marks palette item green)
+      saveBtn.addEventListener("click", function () {
+        const currentQuestion = questions[currentQuestionIndex];
+        const selectedOption = currentQuestion.querySelector("input[type='radio']:checked");
+        if (selectedOption) {
+          paletteItems[currentQuestionIndex].classList.remove("marked-review");
+          paletteItems[currentQuestionIndex].classList.add("saved");
+          if (currentQuestionIndex < totalQuestions - 1) {
+            showQuestion(currentQuestionIndex + 1);
+          }
+        } else {
+          alert("Please select an option before saving.");
+        }
+      });
+
+      // Button event: Submit Quiz
+      submitBtn.addEventListener("click", function () {
+        submitQuiz();
+      });
+
+      // Palette click event to jump to specific question
+      paletteItems.forEach(item => {
+        item.addEventListener("click", function () {
+          showQuestion(parseInt(this.getAttribute("data-index")));
+        });
+      });
+
+      // Check for unanswered questions; if all answered, return true; otherwise return the first unanswered index
+      function allQuestionsAnswered() {
+        let unansweredIndex = -1;
+        questions.forEach((q, i) => {
+          const selected = q.querySelector("input[type='radio']:checked");
+          if (!selected && unansweredIndex === -1) {
+            unansweredIndex = i;
+          }
+        });
+        return unansweredIndex === -1 ? true : unansweredIndex;
+      }
+
+      // Grading function: Compare each selected answer with the correct answer (from data-correct attribute)
+      function checkAnswers() {
+        let score = 0;
+        questions.forEach(q => {
+          const selected = q.querySelector("input[type='radio']:checked");
+          const correct = q.getAttribute("data-correct");
+          if (selected && selected.value === correct) {
+            score++;
+          }
+        });
+        return score;
+      }
+
+      // Submit quiz: If unanswered, prompt user; else grade and send answers
+      function submitQuiz() {
+        const unanswered = allQuestionsAnswered();
+        if (unanswered !== true) {
+          alert("Please answer all questions. Taking you to the first unanswered question.");
+          showQuestion(unanswered);
+          return;
+        }
+        // Optionally, grade the quiz on the client side:
+        const score = checkAnswers();
+        
+        // Build answer data using each question's input name (which contains the question _id)
+        let data = {};
+        questions.forEach(q => {
+          const radios = q.querySelectorAll("input[type='radio']");
+          if (radios.length > 0) {
+            const name = radios[0].name;
+            const selected = q.querySelector("input[type='radio']:checked");
+            data[name] = selected ? selected.value : "";
+          }
+        });
+        console.log("Submitting quiz data:", data);
+        fetch("/submit_aptitude", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+          if (result.redirect) window.location.href = result.redirect;
+        })
+        .catch(error => {
+          console.error("Error submitting quiz:", error);
+          alert("Failed to submit quiz. Please try again.");
+        });
+      }
+
+      // Initialize by displaying the first question
+      showQuestion(0);
+    });
+  </script>
+  {% elif section == 'technical' %}
+  <!-- Technical Section with Vertical Instructions -->
+  <div class="technical-wrapper">
+    <!-- Left: Technical Instructions -->
+    <div class="technical-instructions">
+      <h2>Technical Quiz Instructions</h2>
+      <p><strong>Marking Scheme:</strong> Each coding question carries 10 marks. Your solution will be evaluated by the Judge0 API against a set of test cases.</p>
+      <p><strong>Steps to Follow:</strong></p>
+      <ol>
+        <li>Read the problem statement carefully.</li>
+        <li>Write your solution in the provided Ace Editor.</li>
+        <li>Click "Save" to record your code for each question.</li>
+        <li>Review your code to ensure it meets all requirements.</li>
+        <li>Once completed, click "Submit Quiz" to compile and run your solution.</li>
+      </ol>
+      <hr>
+      <h3>Submission Guidelines for Judge0</h3>
+      <p>Follow these guidelines to ensure your code is evaluated correctly:</p>
+      <ol>
+        <li>
+          <strong>Read Input from Standard Input:</strong><br>
+          Use <code>sys.stdin.read().strip()</code> to capture input. If in JSON format, parse it using <code>json.loads</code>.
+        </li>
+        <li>
+          <strong>Produce the Exact Expected Output:</strong><br>
+          Use <code>sys.stdout.write()</code> (avoid extra spaces/newlines). Format numbers precisely (e.g., <code>f"{result:.3f}"</code>).
+        </li>
+        <li>
+          <strong>Self-Contained Code:</strong><br>
+          Write a complete script with a main block (<code>if __name__ == "__main__":</code>) that runs independently.
+        </li>
+        <li>
+          <strong>Remove Debug Statements:</strong><br>
+          Eliminate any extra output beyond the final result.
+        </li>
+        <li>
+          <strong>Handle Errors Gracefully:</strong><br>
+          Validate input and handle missing or malformed data to avoid crashes.
+        </li>
+      </ol>
+    </div>
+    <!-- Right: Technical Quiz Form -->
+    <div class="technical-quiz">
+      <form id="quiz-form">
+        <h2>Technical Section (10 Marks)</h2>
+        {% for question in questions %}
+          <div class="quiz-question">
+            <h3>Q{{ loop.index }}: {{ question['question'] }}</h3>
+            {% if question['type'] == 'coding' %}
+              <!-- Ace Editor for Coding Questions -->
+              <div id="editor_{{ loop.index }}" class="ace-editor-container"></div>
+              <input type="hidden" name="question_{{ question['_id'] }}" id="code_{{ loop.index }}">
+            {% else %}
+              <!-- Textarea for Non-Coding Questions -->
+              <textarea name="question_{{ question['_id'] }}" placeholder="Write your answer here..." required></textarea>
+            {% endif %}
+          </div>
+          <hr>
+        {% endfor %}
+        <button type="submit" class="quiz-submit-btn">Submit Quiz</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Timer for technical section (if needed)
+      function startTimer(duration, display) {
+        let timer = duration, minutes, seconds;
+        const interval = setInterval(function () {
+          minutes = parseInt(timer / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+          display.textContent = minutes + ":" + seconds;
+          if (--timer < 0) {
+            clearInterval(interval);
+            document.querySelector("form").submit();
+          }
+        }, 1000);
+      }
+      let timeLimit = parseInt("{{ time_limit }}", 10);
+      let display = document.querySelector("#timer");
+      if(display){
+        startTimer(timeLimit, display);
+      }
+
+      // Initialize Ace Editor for coding questions with increased height
+      const codingQuestions = document.querySelectorAll('.ace-editor-container');
+      codingQuestions.forEach((editorContainer, index) => {
+        const editorId = editorContainer.id;
+        const codeInputId = `code_${index + 1}`;
+        const editor = ace.edit(editorId);
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/python");
+        document.getElementById(codeInputId).value = editor.getValue();
+        editor.session.on("change", function () {
+          document.getElementById(codeInputId).value = editor.getValue();
+        });
+      });
+
+      // Handle form submission for technical section
+      const form = document.getElementById("quiz-form");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => {
+          data[key] = value;
+        });
+        codingQuestions.forEach((editorContainer, index) => {
+          const editorId = editorContainer.id;
+          const codeInputId = `code_${index + 1}`;
+          const editor = ace.edit(editorId);
+          data[codeInputId] = editor.getValue();
+        });
+        console.log("Submitting quiz data:", data);
+        const url = '/submit_technical';
+        fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(result => {
+          if (result.redirect) window.location.href = result.redirect;
+        })
+        .catch(error => {
+          console.error("Error submitting quiz:", error);
+          alert("Failed to submit quiz. Please try again.");
+        });
+      });
+    });
+  </script>
+  {% endif %}
+</body>
+</html>

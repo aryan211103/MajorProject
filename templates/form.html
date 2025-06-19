@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Information Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_form.css') }}">
+</head>
+<body>
+  <!-- (Optional) Uncomment for a sticky navbar -->
+  <!--
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="{{ url_for('auth.home') }}" class="logo">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+      </a>
+    </div>
+  </nav>
+  -->
+  
+  <div class="form-container">
+    <h2>Student Information Form</h2>
+    <p class="form-description">
+      Please fill out the form below with accurate details to help us better understand your profile.
+    </p>
+    
+    <!-- Progress Bar with 5 Steps -->
+    <div class="progress-bar">
+      <div class="progress-step active">Personal Info</div>
+      <div class="progress-step">Academic Details</div>
+      <div class="progress-step">Test Scores</div>
+      <div class="progress-step">Experience</div>
+      <div class="progress-step">Preview</div>
+    </div>
+    
+    <form id="multiStepForm" action="{{ url_for('auth.form') }}" method="POST">
+      <!-- Step 1: Personal Details -->
+      <div class="form-step active" data-step="1">
+        <h3>Personal Details</h3>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" 
+               value="{{ user_data.name if user_data and user_data.name else '' }}" required>
+        
+        <label for="gpa">GPA (Out of 4):</label>
+        <input type="text" id="gpa" name="gpa" placeholder="e.g., 3.5" 
+               value="{{ user_data.gpa if user_data and user_data.gpa else '' }}" required>
+        
+        <label for="degree">Bachelor's Degree:</label>
+        <select id="degree" name="degree" required>
+          <option value="" disabled selected>Select your degree</option>
+          {% for degree in ["Robotics", "Computer Engineering", "Mechanical Engineering", "Software Engineering", "Information Technology", "Electrical Engineering", "Chemical Engineering", "Data Science", "Civil Engineering", "Artificial Intelligence"] %}
+            <option value="{{ degree }}" {% if user_data and user_data.degree == degree %}selected{% endif %}>{{ degree }}</option>
+          {% endfor %}
+        </select>
+        
+        <div class="button-group">
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+      
+      <!-- Step 2: Skills & Languages -->
+      <div class="form-step" data-step="2">
+        <h3>Skills & Languages</h3>
+        <label for="skills">Skills:</label>
+        <div class="skills-container">
+          {% for skill in ["Artificial Intelligence", "Cloud Computing", "Computer Networks", "Data Structures & Algorithms (DSA)", "DevOps", "Machine Learning", "Operating Systems", "PostgreSQL", "SQL", "Web Development"] %}
+            <div class="skill-wrapper">
+              <input type="checkbox" id="{{ skill }}" name="skills" value="{{ skill }}"
+                     {% if user_data and user_data.skills and skill in user_data.skills %}checked{% endif %}>
+              <label for="{{ skill }}" class="skill-item">{{ skill }}</label>
+            </div>
+          {% endfor %}
+        </div>
+        
+        <label for="languages">Rate Your Proficiency in Programming Languages:</label>
+        <div class="rating-section">
+          {% for language in ["C", "C++", "Java", "JavaScript", "Python", "R", "Ruby"] %}
+            <div class="rating-row">
+              <label>{{ language }}</label>
+              <div class="star-rating" data-language="{{ language }}">
+                {% for i in range(1, 6) %}
+                  <input type="radio" name="rating[{{ language }}]" value="{{ i }}" id="{{ language }}-{{ i }}"
+                         {% if user_data and user_data.ratings and user_data.ratings.get(language) == i %}checked{% endif %}>
+                  <label for="{{ language }}-{{ i }}">&#9733;</label>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        
+        <div class="button-group">
+          <button type="button" class="prev-btn">Previous</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+      
+      <!-- Step 3: Test Scores -->
+      <div class="form-step" data-step="3">
+        <h3>Standardized Tests</h3>
+        <label for="gre">GRE Score (out of 340):</label>
+        <input type="number" id="gre" name="gre" min="0" max="340" placeholder="e.g., 320" required 
+               value="{{ user_data.gre if user_data and user_data.gre is defined else '' }}">
+        
+        <label for="ielts">IELTS Score (optional):</label>
+        <input type="number" id="ielts" name="ielts" min="0" max="9" step="0.5" placeholder="e.g., 7.5" 
+               value="{{ user_data.ielts if user_data and user_data.ielts is defined else '' }}">
+        
+        <label for="toefl">TOEFL Score (optional):</label>
+        <input type="number" id="toefl" name="toefl" min="0" max="120" placeholder="e.g., 100" 
+               value="{{ user_data.toefl if user_data and user_data.toefl is defined else '' }}">
+        
+        <div class="button-group">
+          <button type="button" class="prev-btn">Previous</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+      
+      <!-- Step 4: Experience & Activities -->
+      <div class="form-step" data-step="4">
+        <h3>Experience & Activities</h3>
+        <label for="job_exp">Job Experience (Years):</label>
+        <input type="text" id="job_exp" name="job_experience" placeholder="e.g., 2 years" required
+               value="{{ user_data.job_experience if user_data and user_data.job_experience else '' }}">
+        
+        <label for="extra">Extra Curricular Activities:</label>
+        <input type="text" id="extra" name="extra_curricular" placeholder="e.g., Volunteering, Sports" required
+               value="{{ user_data.extra_curricular if user_data and user_data.extra_curricular else '' }}">
+        
+        <label for="internship_duration">Internship Duration (Months):</label>
+        <input type="text" id="internship_duration" name="internship_duration" placeholder="e.g., 6 months" required
+               value="{{ user_data.internship_duration if user_data and user_data.internship_duration else '' }}">
+        
+        <label for="research_papers">Number of Research Papers:</label>
+        <input type="text" id="research_papers" name="research_papers" placeholder="e.g., 2" required
+               value="{{ user_data.research_papers if user_data and user_data.research_papers else '' }}">
+        
+        <div class="button-group">
+          <button type="button" class="prev-btn">Previous</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+      
+      <!-- Step 5: Preview -->
+      <div class="form-step" data-step="5">
+        <h3>Preview Your Information</h3>
+        <div class="preview-field"><span class="label">Full Name:</span> <span id="preview-name"></span></div>
+        <div class="preview-field"><span class="label">GPA:</span> <span id="preview-gpa"></span></div>
+        <div class="preview-field"><span class="label">Degree:</span> <span id="preview-degree"></span></div>
+        <div class="preview-field"><span class="label">Skills:</span> <span id="preview-skills"></span></div>
+        <div class="preview-field"><span class="label">GRE Score:</span> <span id="preview-gre"></span></div>
+        <div class="preview-field"><span class="label">IELTS Score:</span> <span id="preview-ielts"></span></div>
+        <div class="preview-field"><span class="label">TOEFL Score:</span> <span id="preview-toefl"></span></div>
+        <div class="preview-field"><span class="label">Internship Duration:</span> <span id="preview-internship"></span></div>
+        <div class="preview-field"><span class="label">Research Papers:</span> <span id="preview-research"></span></div>
+        <div class="preview-field"><span class="label">Language Ratings:</span> <span id="preview-languages"></span></div>
+        
+        <div class="button-group">
+          <button type="button" class="prev-btn">Edit</button>
+          <div class="final-actions">
+            <button type="submit" name="action" value="select" class="select-button">Submit &amp; Check Universities</button>
+            <a href="{{ url_for('auth.home') }}" class="home-button">Go Back to Home Page</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <!-- JavaScript for Multi-step Form, Progress Bar, and Preview -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Output form_filled as a boolean literal using tojson and safe filters.
+      var prefilled = {{ form_filled|tojson|safe }};
+      
+      const form = document.getElementById('multiStepForm');
+      const formSteps = Array.from(document.querySelectorAll('.form-step'));
+      const nextButtons = document.querySelectorAll('.next-btn');
+      const prevButtons = document.querySelectorAll('.prev-btn');
+      const progressSteps = document.querySelectorAll('.progress-step');
+      let currentStep = 0;
+      const totalSteps = formSteps.length;
+      
+      // Set currentStep based on whether the form is already filled.
+      if (prefilled === true) {
+        currentStep = totalSteps - 1;
+      } else {
+        currentStep = 0;
+      }
+      
+      function updateFormSteps() {
+        formSteps.forEach((step, index) => {
+          step.classList.toggle('active', index === currentStep);
+        });
+      }
+      
+      function updateProgressBar() {
+        progressSteps.forEach((step, index) => {
+          if (index <= currentStep) {
+            step.classList.add('active');
+          } else {
+            step.classList.remove('active');
+          }
+        });
+      }
+      
+      function populatePreview() {
+        document.getElementById('preview-name').textContent = document.getElementById('name').value;
+        document.getElementById('preview-gpa').textContent = document.getElementById('gpa').value;
+        document.getElementById('preview-degree').textContent = document.getElementById('degree').value;
+        
+        const skills = Array.from(document.querySelectorAll('input[name="skills"]:checked'))
+                              .map(el => el.value)
+                              .join(', ');
+        document.getElementById('preview-skills').textContent = skills;
+        
+        document.getElementById('preview-gre').textContent = document.getElementById('gre').value;
+        document.getElementById('preview-ielts').textContent = document.getElementById('ielts').value;
+        document.getElementById('preview-toefl').textContent = document.getElementById('toefl').value;
+        document.getElementById('preview-internship').textContent = document.getElementById('internship_duration').value;
+        document.getElementById('preview-research').textContent = document.getElementById('research_papers').value;
+        
+        const languages = ["C", "C++", "Java", "JavaScript", "Python", "R", "Ruby"];
+        let languageRatings = [];
+        languages.forEach(language => {
+          const checkedInput = document.querySelector(`input[name="rating[${language}]"]:checked`);
+          if (checkedInput) {
+            languageRatings.push(`${language}: ${checkedInput.value}`);
+          }
+        });
+        document.getElementById('preview-languages').textContent = languageRatings.join(', ');
+      }
+      
+      // If the form is prefilled, immediately populate preview.
+      if (prefilled === true) {
+        populatePreview();
+      }
+      
+      // Next button event listeners.
+      nextButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // If we're moving to the preview step, populate it.
+          if (currentStep === totalSteps - 2) {
+            populatePreview();
+          }
+          if (currentStep < totalSteps - 1) {
+            currentStep++;
+            updateFormSteps();
+            updateProgressBar();
+          }
+        });
+      });
+      
+      // Previous button event listeners.
+      prevButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          if (currentStep === totalSteps - 1) {
+            // If on the preview step and user clicks "Edit", go back to step 4.
+            currentStep = totalSteps - 2;
+          } else if (currentStep > 0) {
+            currentStep--;
+          }
+          updateFormSteps();
+          updateProgressBar();
+        });
+      });
+      
+      updateFormSteps();
+      updateProgressBar();
+      
+      // Form submit event: only allow submission if on the final (preview) step.
+      form.addEventListener('submit', (e) => {
+        if (currentStep !== totalSteps - 1) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>  
+</body>
+</html>

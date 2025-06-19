@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_results.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="result-header">
+            <div class="trophy-container">
+                <i class="fas fa-trophy golden-trophy"></i>
+                <div class="sparkles"></div>
+            </div>
+            <h1>Quiz Completed!</h1>
+            <div class="celebration-text">Great Job, Learner!</div>
+        </div>
+
+        <!-- Results Card -->
+        <div class="results-card">
+            <!-- Aptitude Score -->
+            <div class="score-card aptitude">
+                <div class="score-progress">
+                    <div class="progress-circle" style="--score: {{ quiz_data.aptitude_score }}0">
+                        <span>{{ quiz_data.aptitude_score }}/10</span>
+                    </div>
+                </div>
+                <div class="score-info">
+                    <h3><i class="fas fa-brain"></i> Aptitude</h3>
+                    <p>Critical Thinking & Problem Solving</p>
+                </div>
+            </div>
+
+            <!-- Technical Score -->
+            <div class="score-card technical">
+                <div class="score-progress">
+                    <div class="progress-circle" style="--score: {{ quiz_data.technical_score }}0">
+                        <span>{{ quiz_data.technical_score }}/10</span>
+                    </div>
+                </div>
+                <div class="score-info">
+                    <h3><i class="fas fa-code"></i> Technical</h3>
+                    <p>Subject Knowledge & Application</p>
+                </div>
+            </div>
+
+            <!-- Final Score -->
+            <div class="final-score">
+                <div class="total-score">
+                    <span class="score-number">{{ quiz_data.final_score }}</span>
+                    <span class="score-label">/10</span>
+                </div>
+                <div class="skill-level {{ level.lower() }}">{{ level }}</div>
+            </div>
+        </div>
+
+        <!-- Recommendation Section -->
+        <div class="recommendation-section">
+            <a href="{{ url_for('modules.modules', course=quiz_data.course) }}" 
+               class="module-button"
+               onclick="showLoadingBar(event, `{{ url_for('modules.modules', course=quiz_data.course) }}`)">
+                <span>Explore Learning Path</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <div id="loading-bar"></div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="{{ url_for('auth.home') }}" class="home-button">
+                <i class="fas fa-home"></i> Return to Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Confetti Animation Script -->
+    <script>
+        const defaults = {
+            spread: 360,
+            ticks: 100,
+            gravity: 0,
+            decay: 0.94,
+            startVelocity: 30,
+            colors: ['#FFE400', '#FFBD00', '#E89400', '#FFCA6C', '#FDFFB8']
+        };
+
+        function shoot() {
+            confetti({
+                ...defaults,
+                particleCount: 50,
+                scalar: 1.2,
+                shapes: ['circle', 'square']
+            });
+
+            confetti({
+                ...defaults,
+                particleCount: 25,
+                scalar: 0.75,
+                shapes: ['circle', 'square']
+            });
+        }
+
+        setTimeout(shoot, 500);
+        setTimeout(shoot, 1000);
+    </script>
+</body>
+</html>
